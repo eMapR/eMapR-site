@@ -1,0 +1,113 @@
+{
+	"years": [{
+		"year": "2016",
+		"pubs": [{
+			"name": "Alonso",
+			"year": "2016",
+			"title": "Wetland landscape spatio-temporal degradation dynamics using the new Google Earth Engine cloud-based platform: Opportunities for non-specialists in remote sensing.",
+			"citation": "Alonso, A., Muñoz-Carpena, R., Kennedy, R. E., & Murcia, C. (2016). Wetland landscape spatio-temporal degradation dynamics using the new Google Earth Engine cloud-based platform: Opportunities for non-specialists in remote sensing. Trans. ASABE, 59(5), 1333-1344."
+		}, {
+			"name": "Meigs",
+			"year": "2016",
+			"title": "Do insect outbreaks reduce the severity of subsequent forest fires?.",
+			"citation": "Meigs, G. W., Zald, H. S., Campbell, J. L., Keeton, W. S., & Kennedy, R. E. (2016). Do insect outbreaks reduce the severity of subsequent forest fires?. Environmental Research Letters, 11(4), 045008."
+		}, {
+			"name": "Turner",
+			"year": "2016",
+			"title": "Regional carbon cycle responses to 25 years of variation in climate and disturbance in the US Pacific Northwest.",
+			"citation": "Turner, D. P., Ritts, W. D., Kennedy, R. E., Gray, A. N., & Yang, Z. (2016). Regional carbon cycle responses to 25 years of variation in climate and disturbance in the US Pacific Northwest. Regional environmental change, 16(8), 2345-2355."
+		}]
+	}, {
+		"year": "2015",
+		"pubs": [{
+			"name": "Kennedy",
+			"year": "2015",
+			"title": "Attribution of disturbance change agent from Landsat time-series in support of habitat monitoring in the Puget Sound region, USA.",
+			"citation": "Kennedy, R. E., Yang, Z., Braaten, J., Copass, C., Antonova, N., Jordan, C., & Nelson, P. (2015). Attribution of disturbance change agent from Landsat time-series in support of habitat monitoring in the Puget Sound region, USA. Remote Sensing of Environment, 166, 271-285."
+		}, {
+			"name": "Turner",
+			"year": "2015",
+			"title": "Effects of harvest, fire, and pest/pathogen disturbances on the West Cascades ecoregion carbon balance.",
+			"citation": "Turner, D. P., Ritts, W. D., Kennedy, R. E., Gray, A. N., & Yang, Z. (2015). Effects of harvest, fire, and pest/pathogen disturbances on the West Cascades ecoregion carbon balance. Carbon balance and management, 10(1), 12."
+		}, {
+			"name": "Meigs",
+			"year": "2015",
+			"title": "Spatiotemporal dynamics of recent mountain pine beetle and western spruce budworm outbreaks across the Pacific Northwest Region, USA.",
+			"citation": "Meigs, G. W., Kennedy, R. E., Gray, A. N., & Gregory, M. J. (2015). Spatiotemporal dynamics of recent mountain pine beetle and western spruce budworm outbreaks across the Pacific Northwest Region, USA. Forest Ecology and Management, 339, 71-86."
+		}, {
+			"name": "Bartz",
+			"year": "2015",
+			"title": "Trends in developed land cover adjacent to habitat for threatened salmon in Puget Sound, Washington, USA.",
+			"citation": "Bartz, K. K., Ford, M. J., Beechie, T. J., Fresh, K. L., Pess, G. R., Kennedy, R. E., ... & Sheer, M. (2015). Trends in developed land cover adjacent to habitat for threatened salmon in Puget Sound, Washington, USA. PloS one, 10(4), e0124415."
+		}, {
+			"name": "Meigs",
+			"year": "2015",
+			"title": "Does wildfire likelihood increase following insect outbreaks in conifer forests?",
+			"citation": "Meigs, G. W., Campbell, J. L., Zald, H. S., Bailey, J. D., Shaw, D. C., & Kennedy, R. E. (2015). Does wildfire likelihood increase following insect outbreaks in conifer forests?. Ecosphere, 6(7), 1-24."
+		}]
+	}, {
+		"year": "2014",
+		"pubs": [{
+			"name": "Kennedy",
+			"year": "2014",
+			"title": "Bringing an ecological view of change to Landsat-based remote sensing.",
+			"citation": "Kennedy, R. E., Andréfouët, S., Cohen, W. B., Gómez, C., Griffiths, P., Hais, M., ... & Meigs, G. W. (2014). Bringing an ecological view of change to Landsat‐based remote sensing. Frontiers in Ecology and the Environment, 12(6), 339-346."
+		}, {
+			"name": "Pflugmacher",
+			"year": "2014",
+			"title": "Using Landsat-derived disturbance and recovery history and lidar to map forest biomass dynamics.",
+			"citation": "Pflugmacher, D., Cohen, W. B., Kennedy, R. E., & Yang, Z. (2014). Using Landsat-derived disturbance and recovery history and lidar to map forest biomass dynamics. Remote Sensing of Environment, 151, 124-137."
+		}, {
+			"name": "Schroeder",
+			"year": "2014",
+			"title": "Improving estimates of forest disturbance by combining observations from Landsat time series with US Forest Service Forest Inventory and Analysis data.",
+			"citation": "Schroeder, T. A., Healey, S. P., Moisen, G. G., Frescino, T. S., Cohen, W. B., Huang, C., ... & Yang, Z. (2014). Improving estimates of forest disturbance by combining observations from Landsat time series with US Forest Service Forest Inventory and Analysis data. Remote Sensing of Environment, 154, 61-73."
+		}, {
+			"name": "Bright",
+			"year": "2014",
+			"title": "Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests.",
+			"citation": "Bright, B. C., Hudak, A. T., Kennedy, R. E., & Meddens, A. J. (2014). Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 7(8), 3440-3452."
+		}, {
+			"name": "Powell",
+			"year": "2014",
+			"title": "Observation of trends in biomass loss as a result of disturbance in the conterminous US: 1986–2004.",
+			"citation": "Powell, S. L., Cohen, W. B., Kennedy, R. E., Healey, S. P., & Huang, C. (2014). Observation of trends in biomass loss as a result of disturbance in the conterminous US: 1986–2004. Ecosystems, 17(1), 142-157."
+		}, {
+			"name": "Sulla-Menashe",
+			"year": "2014",
+			"title": "Detecting forest disturbance in the Pacific Northwest from MODIS time series using temporal segmentation.",
+			"citation": "Sulla-Menashe, D., Kennedy, R. E., Yang, Z., Braaten, J., Krankina, O. N., & Friedl, M. A. (2014). Detecting forest disturbance in the Pacific Northwest from MODIS time series using temporal segmentation. Remote Sensing of Environment, 151, 114-123."
+		}, {
+			"name": "Yin",
+			"year": "2014",
+			"title": "Mapping annual land use and land cover changes using MODIS time series.",
+			"citation": "Yin, H., Pflugmacher, D., Kennedy, R. E., Sulla-Menashe, D., & Hostert, P. (2014). Mapping annual land use and land cover changes using MODIS time series. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 7(8), 3421-3427."
+		}, {
+			"name": "Park",
+			"year": "2014",
+			"title": "Application of physically-based slope correction for maximum forest canopy height estimation using waveform lidar across different footprint sizes and locations: Tests on lvis and glas.",
+			"citation": "Park, T., Kennedy, R. E., Choi, S., Wu, J., Lefsky, M. A., Bi, J., ... & Knyazikhin, Y. (2014). Application of physically-based slope correction for maximum forest canopy height estimation using waveform lidar across different footprint sizes and locations: Tests on lvis and glas. Remote Sensing, 6(7), 6566-6586."
+		}]
+	}, {
+		"year": "2013",
+		"pubs": [{
+			"name": "Masek",
+			"year": "2013",
+			"title": "United States forest disturbance trends observed using Landsat time series.",
+			"citation": "Masek, J. G., Goward, S. N., Kennedy, R. E., Cohen, W. B., Moisen, G. G., Schleeweis, K., & Huang, C. (2013). United States forest disturbance trends observed using Landsat time series. Ecosystems, 16(6), 1087-1104."
+		}, {
+			"name": "Main-Knorn",
+			"year": "2013",
+			"title": "Monitoring coniferous forest biomass change using a Landsat trajectory-based approach.",
+			"citation": "Main-Knorn, M., Cohen, W. B., Kennedy, R. E., Grodzki, W., Pflugmacher, D., Griffiths, P., & Hostert, P. (2013). Monitoring coniferous forest biomass change using a Landsat trajectory-based approach. Remote Sensing of Environment, 139, 277-290."
+		}]
+	}, {
+		"year": "2012",
+		"pubs": [{
+			"name": "Bright",
+			"year": "2012",
+			"title": "Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests.",
+			"citation": "Bright, B. C., Hudak, A. T., Kennedy, R. E., & Meddens, A. J. (2014). Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 7(8), 3440-3452."
+		}]
+	}]
+}

@@ -1,0 +1,161 @@
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+
+body, html {
+    height: 100%;
+    color: black /*#777*/;
+    line-height: 1.8;
+}
+
+/* Create a Parallax Effect */
+.bgimg-1, .bgimg-2, .bgimg-3 {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* First image (Logo. Full height) */
+.bgimg-1 {
+    background-image: url('../images/tcb1_orig.jpg');
+    min-height: 100%;
+}
+
+/* Second image (Portfolio) */
+.bgimg-2 {
+    background-image: url("../images/tc1_orig.jpg");
+    min-height: 500px;
+}
+
+/* Third image (Contact) */
+.bgimg-3 {
+    background-image: url("../images/nasa_vis.jpg");
+    min-height: 500px;
+}
+
+.w3-wide {letter-spacing: 10px;}
+.w3-hover-opacity {cursor: pointer;}
+
+.blurp--top {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -96px;
+    margin-top: -50px;
+    z-index: 0;
+}
+
+.down-arrow--bubble {
+    bottom: -16px;
+}
+
+.down-arrow {
+    display: block;
+    width: 80px;
+    height: 80px;
+    opacity: 0.7;
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    /*cursor: pointer;*/
+    z-index: 0;
+}
+    
+.down-arrow--bubble .arrow {
+    width: 16px;
+    height: 16px;
+    margin-left: -8px;
+    margin-top: -8px;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+}
+    
+.down-arrow .arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 20;
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.tab-active {
+	background-color: #ccc
+}
+
+
+
+
+
+
+.mdl-card + .mdl-card {
+  margin-top: 40px;
+}
+
+// Card styles
+
+.mdl-card--horizontal {
+  flex-direction: column;
+  height: 1vh; /* 1 */
+  padding-left: 150px;
+  width: 100%;
+  
+  .mdl-card__media {
+    left: 0;
+    position: absolute;
+    width: 150px;
+  }
+  
+  .mdl-card__supporting-text {
+    flex: 1 1 auto;
+    width: auto;
+  }
+}
+
+.mdl-card--horizontal-2 {
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 0px;
+  
+  .mdl-card__title {
+    align-items: flex-start;
+    flex-direction: column;
+    flex: 1 auto;
+    float: left;
+  }
+  .mdl-card__title-text {
+    align-self: flex-start;
+  }
+  .mdl-card__media {
+    flex: 0 auto; 
+    float: right;
+    height: 112px;
+    margin: 16px 16px 0 0;
+    width: 112px;
+  }
+  .mdl-card__actions {
+    clear: both;
+    flex: 1 auto; 
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
+    
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+    .bgimg-1, .bgimg-2, .bgimg-3 {
+        background-attachment: scroll;
+    }
+}

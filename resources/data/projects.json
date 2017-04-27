@@ -1,0 +1,58 @@
+[
+	{
+		"name": "California Carbon",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "NASA CMS 2016",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "Landsat Science Team",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "Google Research Award",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "NPS NCCN Change Labeling",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "FS Cohen CMS",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "FS CMS",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "CMONster",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "IceTrendr",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "FS NWFP Disturbance Monitoring",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}, {
+		"name": "Carbon Modeling and Mapping",
+		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
+		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"url": "mock.html"
+	}
+]

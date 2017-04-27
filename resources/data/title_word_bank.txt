@@ -1,0 +1,19 @@
+Wetland landscape spatio-temporal degradation dynamics using the new Google Earth Engine cloud-based platform: Opportunities for non-specialists in remote sensing
+Do insect outbreaks reduce the severity of subsequent forest fires
+Regional carbon cycle responses to 25 years of variation in climate and disturbance in the US Pacific Northwest
+Attribution of disturbance change agent from Landsat time-series in support of habitat monitoring in the Puget Sound region, USA
+Effects of harvest, fire, and pest/pathogen disturbances on the West Cascades ecoregion carbon balance
+Spatiotemporal dynamics of recent mountain pine beetle and western spruce budworm outbreaks across the Pacific Northwest Region, USA
+Trends in developed land cover adjacent to habitat for threatened salmon in Puget Sound, Washington, USA
+Does wildfire likelihood increase following insect outbreaks in conifer forests
+Bringing an ecological view of change to Landsat based remote sensing
+Using Landsat-derived disturbance and recovery history and lidar to map forest biomass dynamics
+Improving estimates of forest disturbance by combining observations from Landsat time series with US Forest Service Forest Inventory and Analysis data
+Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests
+Observation of trends in biomass loss as a result of disturbance in the conterminous US: 1986–2004
+Detecting forest disturbance in the Pacific Northwest from MODIS time series using temporal segmentation
+Mapping annual land use and land cover changes using MODIS time series
+Application of physically-based slope correction for maximum forest canopy height estimation using waveform lidar across different footprint sizes and locations: Tests on lvis and glas
+United States forest disturbance trends observed using Landsat time series
+Monitoring coniferous forest biomass change using a Landsat trajectory-based approach
+Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests
