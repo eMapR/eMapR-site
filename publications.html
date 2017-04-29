@@ -53,21 +53,18 @@
 		</div>
 		<div class="w3-content w3-container w3-padding-64">
 			<div>
-				<img class="w3-image" src="resources/images/pub_word_cloud.png">
+				<img class="w3-image" src="resources/images/publications/publications_word_cloud.svg">
 			</div>
 			<div ng-app="myApp">
 				<div ng-controller="pubCtrl">
-					
 					<div class="" ng-repeat="year in pubs.years">
 						<h3 ng-cloak>{{ year.year }} </h3>
 						<div class="w3-panel w3-leftbar w3-border-dark-grey w3-light-grey" ng-repeat="pub in year.pubs">
-							<p ng-cloak>{{ pub.citation }} </p>
+							<p ng-cloak>{{ pub.citation }}</p>
 						</div>
-					</div>
-						
-						
-					</div>
+					</div>		
 				</div>
-			</div>
+            </div>
+        </div>
 	</body>
 </html>

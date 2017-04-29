@@ -2,24 +2,24 @@
 	"student": [{
 		"name": "Tyler Harris",
 		"position": "Master's Student",
-		"img": "resources/images/people/people_no_photo.jpg",
-		"bio": "Tyler's bio"
+		"img": "resources/images/people/people_harrist.jpg",
+		"bio": "Discipline: Geography, Environmental Sciences, and Marine Resource Management"
 	}, {
 		"name": "Paulo Murillo-Sandoval",
-		"position": "Master's Student",
-		"img": "resources/images/people/people_no_photo.jpg",
-		"bio": "Paulo's bio"
+		"position": "PhD Student",
+		"img": "resources/images/people/people_murillop.jpg",
+		"bio": "Paulo is interested in remote sensing time-series for agriculture and forest monitoring, field spectrometry on vegetation, drones and DIY tools. He also like to dance to salsa music and other tropical rhythms."
 	}, {
 		"name": "Jane Darbyshire",
 		"position": "PhD Student",
 		"img": "resources/images/people/people_no_photo.jpg",
-		"bio": "Jane's bio"
+		"bio": "Discipline: Geography, Environmental Sciences, and Marine Resource Management"
 	}],
 	"faculty": [{
 		"name": "Justin Braaten",
 		"position": "Faculty Research Assistant",
 		"img": "resources/images/people/people_braatenj.jpg",
-		"bio": "Justin's bio"
+		"bio": "Justin mostly enjoys tinkering with code to push pixels around and developing workflows to produce analysis-ready data. He also has an interest in web development, graphic design, and data visualization. Much of his work revolves around Landsat data - with contributions to automated MSS cloud masking, time-series standardization across all Landsat sensors, and landscape change detection." 
 	}, {
 		"name": "Sam Hooper",
 		"position": "Faculty Research Assistant",
@@ -28,13 +28,8 @@
 	}, {
 		"name": "Peder Nelson",
 		"position": "Faculty Research Assistant",
-		"img": "resources/images/people/people_no_photo.jpg",
-		"bio": "Peder's bio"
-	}, {
-		"name": "Dan Stephen",
-		"position": "Faculty Research Assistant",
-		"img": "resources/images/people/people_stephend.jpg",
-		"bio": "Dan has a history of changing careers every few years, but has recently settled on cartography, web mapping, and mapping application development as his long-term primary time sink. Pretty much his favorite thing is clickable buttons that make cool looking (and sometimes useful) things happen, and this work is one of the most legitimate avenues he could find to make money thinking about them. He learned how to do this mostly at Oregon State University, but finds that nearly every job in this field requires learning new technology. Which is perfect."
+		"img": "resources/images/people/people_nelsonp.jpg",
+		"bio": "With a background in environmental education, biological sciences, and land management, Peder uses remote sensing and geographic information systems to create maps and data that show people what is happening on planet Earth, particularly changes that can be seen from space. In his current work, he is developing an automated visualization and analysis tool for mapping changes in glacier extent using annual 1984 to 2014 satellite imagery. The overarching broader impact of this project is to create a novel way for glaciologists, climatologists, educators, and students to understand how and where Earth’s glaciers have changed over this period. He has significantly contributed to several research projects related to understanding forest and land cover changes using Landsat satellite imagery across the United States, eastern Europe, Russia, Mongolia, and Kazakhstan. In addition, has created several education lessons based around this research."
 	}, {
 		"name": "Joe Hughes",
 		"position": "Post Doc",
@@ -48,6 +43,11 @@
 	}],
 	"affiliate": [],
 	"alumni": [{
+		"name": "Dan Stephen",
+		"position": "Faculty Research Assistant",
+		"img": "resources/images/people/people_stephend.jpg",
+		"bio": "Dan has a history of changing careers every few years, but has recently settled on cartography, web mapping, and mapping application development as his long-term primary time sink. Pretty much his favorite thing is clickable buttons that make cool looking (and sometimes useful) things happen, and this work is one of the most legitimate avenues he could find to make money thinking about them. He learned how to do this mostly at Oregon State University, but finds that nearly every job in this field requires learning new technology. Which is perfect."
+	}, {
 		"name": "Tara Larrue",
 		"position": "Faculty Research Assistant",
 		"img": "resources/images/people/people_larruet.jpg",

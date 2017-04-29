@@ -1,7 +1,30 @@
 {
 	"years": [{
+		"year": "2017",
+		"pubs": [{
+			"name": "Cohen",
+			"year": "2017",
+			"title": "How Similar Are Forest Disturbance Maps Derived from Different Landsat Time Series Algorithms?",
+			"citation": "Cohen, W. B., Healey, S. P., Yang, Z., Stehman, S. V., Brewer, C. K., Brooks, E. B., ... & Loveland, T. R. (2017). How Similar Are Forest Disturbance Maps Derived from Different Landsat Time Series Algorithms? Forests, 8(4), 98."
+		}, {
+			"name": "Reilly",
+			"year": "2017",
+			"title": "Contemporary patterns of fire extent and severity in forests of the Pacific Northwest, USA (1985–2010).",
+			"citation": "Reilly, M. J., Dunn, C. J., Meigs, G. W., Spies, T. A., Kennedy, R. E., Bailey, J. D., & Briggs, K. (2017). Contemporary patterns of fire extent and severity in forests of the Pacific Northwest, USA (1985–2010). Ecosphere, 8(3)."
+		}]
+	}, {
 		"year": "2016",
 		"pubs": [{
+			"name": "Neeti",
+			"year": "2016",
+			"title": "Comparison of national level biomass maps for conterminous US: understanding pattern and causes of differences.",
+			"citation": "Neeti, N., & Kennedy, R. (2016). Comparison of national level biomass maps for conterminous US: understanding pattern and causes of differences. Carbon Balance and Management, 11(1), 19."
+		}, {
+			"name": "Hais",
+			"year": "2016",
+			"title": "Landsat Imagery Spectral Trajectories-Important Variables for Spatially Predicting the Risks of Bark Beetle Disturbance.",
+			"citation": "Hais, M., Wild, J., Berec, L., Brůna, J., Kennedy, R., Braaten, J., & Brož, Z. (2016). Landsat Imagery Spectral Trajectories-Important Variables for Spatially Predicting the Risks of Bark Beetle Disturbance. Remote Sensing, 8(8), 687."
+		}, {
 			"name": "Alonso",
 			"year": "2016",
 			"title": "Wetland landscape spatio-temporal degradation dynamics using the new Google Earth Engine cloud-based platform: Opportunities for non-specialists in remote sensing.",
@@ -20,6 +43,16 @@
 	}, {
 		"year": "2015",
 		"pubs": [{
+			"name": "McDowell",
+			"year": "2015",
+			"title": "Global satellite monitoring of climate-induced vegetation disturbances.",
+			"citation": "McDowell, N. G., Coops, N. C., Beck, P. S., Chambers, J. Q., Gangodagamage, C., Hicke, J. A., ... & Meddens, A. J. (2015). Global satellite monitoring of climate-induced vegetation disturbances. Trends in Plant Science, 20(2), 114-123."
+		}, {
+			"name": "Tanase",
+			"year": "2015",
+			"title": "Radar burn ratio for fire severity estimation at canopy level: An example for temperate forests.",
+			"citation": "Tanase, M. A., Kennedy, R., & Aponte, C. (2015). Radar burn ratio for fire severity estimation at canopy level: An example for temperate forests. Remote Sensing of Environment, 170, 14-31."
+		}, {
 			"name": "Kennedy",
 			"year": "2015",
 			"title": "Attribution of disturbance change agent from Landsat time-series in support of habitat monitoring in the Puget Sound region, USA.",
@@ -48,6 +81,11 @@
 	}, {
 		"year": "2014",
 		"pubs": [{
+			"name": "Roy",
+			"year": "2014",
+			"title": "Landsat-8: Science and product vision for terrestrial global change research.",
+			"citation": "Roy, D. P., Wulder, M. A., Loveland, T. R., Woodcock, C. E., Allen, R. G., Anderson, M. C., ... & Scambos, T. A. (2014). Landsat-8: Science and product vision for terrestrial global change research. Remote Sensing of Environment, 145, 154-172."
+		}, {
 			"name": "Kennedy",
 			"year": "2014",
 			"title": "Bringing an ecological view of change to Landsat-based remote sensing.",
@@ -104,10 +142,162 @@
 	}, {
 		"year": "2012",
 		"pubs": [{
-			"name": "Bright",
+			"name": "Griffiths",
 			"year": "2012",
-			"title": "Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests.",
-			"citation": "Bright, B. C., Hudak, A. T., Kennedy, R. E., & Meddens, A. J. (2014). Landsat time series and lidar as predictors of live and dead basal area across five bark beetle-affected forests. IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 7(8), 3440-3452."
+			"title": "Using annual time-series of Landsat images to assess the effects of forest restitution in post-socialist Romania.",
+			"citation": "Griffiths, P., Kuemmerle, T., Kennedy, R. E., Abrudan, I. V., Knorn, J., & Hostert, P. (2012). Using annual time-series of Landsat images to assess the effects of forest restitution in post-socialist Romania. Remote Sensing of Environment, 118, 199-214."
+		}, {
+			"name": "Kennedy",
+			"year": "2012",
+			"title": "New views on changing Arctic vegetation.",
+			"citation": "Kennedy, R. E. (2012). New views on changing Arctic vegetation. Environmental Research Letters, 7(1), 011001."
+		}, {
+			"name": "Campbell",
+			"year": "2012",
+			"title": "Assessing the carbon consequences of western juniper (Juniperus occidentalis) encroachment across Oregon, USA.",
+			"citation": "Campbell, J. L., Kennedy, R. E., Cohen, W. B., & Miller, R. F. (2012). Assessing the carbon consequences of western juniper (Juniperus occidentalis) encroachment across Oregon, USA. Rangeland Ecology & Management, 65(3), 223-231."
+		}, {
+			"name": "Ohmann",
+			"year": "2012",
+			"title": "Mapping change of older forest with nearest-neighbor imputation and Landsat time-series.",
+			"citation": "Ohmann, J. L., Gregory, M. J., Roberts, H. M., Cohen, W. B., Kennedy, R. E., & Yang, Z. (2012). Mapping change of older forest with nearest-neighbor imputation and Landsat time-series. Forest Ecology and Management, 272, 13-25."
+		}, {
+			"name": "Kennedy",
+			"year": "2012",
+			"title": "Spatial and temporal patterns of forest disturbance and regrowth within the area of the Northwest Forest Plan.",
+			"citation": "Kennedy, R. E., Yang, Z., Cohen, W. B., Pfaff, E., Braaten, J., & Nelson, P. (2012). Spatial and temporal patterns of forest disturbance and regrowth within the area of the Northwest Forest Plan. Remote Sensing of Environment, 122, 117-133."
+		}, {
+			"name": "Pflugmacher",
+			"year": "2012",
+			"title": "Using Landsat-derived disturbance history (1972–2010) to predict current forest structure.",
+			"citation": "Pflugmacher, D., Cohen, W. B., & Kennedy, R. E. (2012). Using Landsat-derived disturbance history (1972–2010) to predict current forest structure. Remote Sensing of Environment, 122, 146-165."
+		}]
+	}, {
+		"year": "2011",
+		"pubs": [{
+			"name": "Turner",
+			"year": "2011",
+			"title": "Multiple constraint analysis of regional land-surface carbon flux.",
+			"citation": "Turner, D. P., Göckede, M., Law, B. E., Ritts, W. D., Cohen, W. B., Yang, Z., ... & Duane, M. (2011). Multiple constraint analysis of regional land–surface carbon flux. Tellus B, 63(2), 207-221."
+		}, {
+			"name": "Turner",
+			"year": "2011",
+			"title": "Decadal trends in net ecosystem production and net ecosystem carbon balance for a regional socioecological system.",
+			"citation": "Turner, D. P., Ritts, W. D., Yang, Z., Kennedy, R. E., Cohen, W. B., Duane, M. V., ... & Law, B. E. (2011). Decadal trends in net ecosystem production and net ecosystem carbon balance for a regional socioecological system. Forest Ecology and Management, 262(7), 1318-1325."
+		}, {
+			"name": "Pflugmacher",
+			"year": "2011",
+			"title": "Comparison and assessment of coarse resolution land cover maps for Northern Eurasia.",
+			"citation": "Pflugmacher, D., Krankina, O. N., Cohen, W. B., Friedl, M. A., Sulla-Menashe, D., Kennedy, R. E., ... & Elsakov, V. (2011). Comparison and assessment of coarse resolution land cover maps for Northern Eurasia. Remote Sensing of Environment, 115(12), 3539-3553."
+		}, {
+			"name": "Meigs",
+			"year": "2011",
+			"title": "A Landsat time series approach to characterize bark beetle and defoliator impacts on tree mortality and surface fuels in conifer forests.",
+			"citation": "Meigs, G. W., Kennedy, R. E., & Cohen, W. B. (2011). A Landsat time series approach to characterize bark beetle and defoliator impacts on tree mortality and surface fuels in conifer forests. Remote Sensing of Environment, 115(12), 3707-3718."
+		}]
+	}, {
+		"year": "2010",
+		"pubs": [{
+			"name": "Powell",
+			"year": "2010",
+			"title": "Quantification of live aboveground forest biomass dynamics with Landsat time-series and field inventory data: A comparison of empirical modeling approaches.",
+			"citation": "Powell, S. L., Cohen, W. B., Healey, S. P., Kennedy, R. E., Moisen, G. G., Pierce, K. B., & Ohmann, J. L. (2010). Quantification of live aboveground forest biomass dynamics with Landsat time-series and field inventory data: A comparison of empirical modeling approaches. Remote Sensing of Environment, 114(5), 1053-1068."
+		}, {
+			"name": "Kennedy",
+			"year": "2010",
+			"title": "Detecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr-Temporal segmentation algorithms.",
+			"citation": "Kennedy, R. E., Yang, Z., & Cohen, W. B. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 1. LandTrendr—Temporal segmentation algorithms. Remote Sensing of Environment, 114(12), 2897-2910."
+		}, {
+			"name": "Cohen",
+			"year": "2010",
+			"title": "Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync-Tools for calibration and validation.",
+			"citation": "Cohen, W. B., Yang, Z., & Kennedy, R. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation. Remote Sensing of Environment, 114(12), 2911-2924."
+		}]
+	}, {
+		"year": "2009",
+		"pubs": [{
+			"name": "Kennedy",
+			"year": "2009",
+			"title": "Remote sensing change detection tools for natural resource managers: Understanding concepts and tradeoffs in the design of landscape monitoring projects.",
+			"citation": "Kennedy, R. E., Townsend, P. A., Gross, J. E., Cohen, W. B., Bolstad, P., Wang, Y. Q., & Adams, P. (2009). Remote sensing change detection tools for natural resource managers: Understanding concepts and tradeoffs in the design of landscape monitoring projects. Remote sensing of environment, 113(7), 1382-1396."
+		}, {
+			"name": "Pflugmacher",
+			"year": "2008",
+			"title": "Regional applicability of forest height and aboveground biomass models for the Geoscience Laser Altimeter System.",
+			"citation": "Pflugmacher, D., Cohen, W., Kennedy, R., & Lefsky, M. (2008). Regional applicability of forest height and aboveground biomass models for the Geoscience Laser Altimeter System. Forest Science, 54(6), 647-657."
+		}, {
+			"name": "Cohen",
+			"year": "2010",
+			"title": "Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync-Tools for calibration and validation.",
+			"citation": "Cohen, W. B., Yang, Z., & Kennedy, R. (2010). Detecting trends in forest disturbance and recovery using yearly Landsat time series: 2. TimeSync—Tools for calibration and validation. Remote Sensing of Environment, 114(12), 2911-2924."
+		}]
+	}, {
+		"year": "2008",
+		"pubs": [{
+			"name": "Pflugmacher",
+			"year": "2008",
+			"title": "Regional applicability of forest height and aboveground biomass models for the Geoscience Laser Altimeter System.",
+			"citation": "Pflugmacher, D., Cohen, W., Kennedy, R., & Lefsky, M. (2008). Regional applicability of forest height and aboveground biomass models for the Geoscience Laser Altimeter System. Forest Science, 54(6), 647-657."
+		}, {
+			"name": "Goward",
+			"year": "2008",
+			"title": "Forest disturbance and North American carbon flux.",
+			"citation": "Goward, S. N., Masek, J. G., Cohen, W., Moisen, G., Collatz, G. J., Healey, S., ... & Powell, S. (2008). Forest disturbance and North American carbon flux."
+		}]
+	}, {
+		"year": "2007",
+		"pubs": [{
+			"name": "Kennedy",
+			"year": "2007",
+			"title": "Trajectory-based change detection for automated characterization of forest disturbance dynamics.",
+			"citation": "Kennedy, R. E., Cohen, W. B., & Schroeder, T. A. (2007). Trajectory-based change detection for automated characterization of forest disturbance dynamics. Remote Sensing of Environment, 110(3), 370-386."
+		}]
+	}, {
+		"year": "2006",
+		"pubs": [{
+			"name": "Cohen",
+			"year": "2006",
+			"title": "MODIS land cover and LAI collection 4 product quality across nine sites in the western hemisphere.",
+			"citation": "Cohen, W. B., Maiersperger, T. K., Turner, D. P., Ritts, W. D., Pflugmacher, D., Kennedy, R. E., ... & Gower, S. T. (2006). MODIS land cover and LAI collection 4 product quality across nine sites in the western hemisphere. IEEE Transactions on Geoscience and Remote Sensing, 44(7), 1843-1857."
+		}, {
+			"name": "Kennedy",
+			"year": "2006",
+			"title": "A method to efficiently apply a biogeochemical model to a landscape.",
+			"citation": "Kennedy, R. E., Turner, D. P., Cohen, W. B., & Guzy, M. (2006). A method to efficiently apply a biogeochemical model to a landscape. Landscape ecology, 21(2), 213-224."
+		}]
+	}, {
+		"year": "2004",
+		"pubs": [{
+			"name": "Lee",
+			"year": "2004",
+			"title": "Hyperspectral versus multispectral data for estimating leaf area index in four different biomes.",
+			"citation": "Lee, K. S., Cohen, W. B., Kennedy, R. E., Maiersperger, T. K., & Gower, S. T. (2004). Hyperspectral versus multispectral data for estimating leaf area index in four different biomes. Remote Sensing of Environment, 91(3), 508-520."
+		}]
+	}, {
+		"year": "2003",
+		"pubs": [{
+			"name": "Morisette",
+			"year": "2003",
+			"title": "High spatial resolution satellite observations for validation of MODIS land products: IKONOS observations acquired under the NASA Scientific Data Purchase.",
+			"citation": "Morisette, J. T., Nickeson, J. E., Davis, P., Wang, Y., Tian, Y., Woodcock, C. E., ... & Kennedy, R. E. (2003). High spatial resolution satellite observations for validation of MODIS land products: IKONOS observations acquired under the NASA Scientific Data Purchase. Remote Sensing of Environment, 88(1), 100-110."
+		}, {
+			"name": "Kennedy",
+			"year": "2003",
+			"title": "Automated designation of tie-points for image-to-image coregistration.",
+			"citation": "Kennedy, R. E., & Cohen, W. B. (2003). Automated designation of tie-points for image-to-image coregistration. International Journal of Remote Sensing, 24(17), 3467-3490."
+		}, {
+			"name": "Parmenter",
+			"year": "2003",
+			"title": "Land use and land cover change in the Greater Yellowstone Ecosystem: 1975–1995.",
+			"citation": "Parmenter, A. W., Hansen, A., Kennedy, R. E., Cohen, W., Langner, U., Lawrence, R., ... & Aspinall, R. (2003). Land use and land cover change in the Greater Yellowstone Ecosystem: 1975–1995. Ecological Applications, 13(3), 687-703."
+		}]
+	}, {
+		"year": "1997",
+		"pubs": [{
+			"name": "Kennedy",
+			"year": "1997",
+			"title": "Empirical methods to compensate for a view-angle-dependent brightness gradient in AVIRIS imagery.",
+			"citation": "Kennedy, R. E., Cohen, W. B., & Takao, G. (1997). Empirical methods to compensate for a view-angle-dependent brightness gradient in AVIRIS imagery. Remote Sensing of Environment, 62(3), 277-291."
 		}]
 	}]
 }
