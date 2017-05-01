@@ -58,7 +58,8 @@ mods = list(
     list("change detection","change-detection"),
     list("land cover", "land-cover"),
     list("landtrendr-temporal","landtrendr"),
-    list("puget sound", "puget-sound")
+    list("puget sound", "puget-sound"),
+    list("disturbances", "disturbance")
   )
 
 mods =  matrix(unlist(mods),nrow=length(mods), ncol=2, byrow=T)
