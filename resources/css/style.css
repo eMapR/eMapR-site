@@ -6,6 +6,17 @@ body, html {
     line-height: 1.8;
 }
 
+/*
+.w3-row{
+   display: table;
+}
+
+.w3-col {
+    padding-bottom: 100px;
+    margin-bottom: -100px; 
+}
+*/
+
 /* Create a Parallax Effect */
 .bgimg-1, .bgimg-2, .bgimg-3 {
     background-attachment: fixed;
@@ -96,74 +107,6 @@ body, html {
     min-height: 500px;
 }
 
-
-
-
-
-
-.mdl-card + .mdl-card {
-  margin-top: 40px;
-}
-
-
-
-.mdl-card--horizontal {
-  flex-direction: column;
-  height: 1vh; /* 1 */
-  padding-left: 150px;
-  width: 100%;
-  
-  .mdl-card__media {
-    left: 0;
-    position: absolute;
-    width: 150px;
-  }
-  
-  .mdl-card__supporting-text {
-    flex: 1 1 auto;
-    width: auto;
-  }
-}
-
-.mdl-card--horizontal-2 {
-  flex-direction: row;
-  flex-wrap: wrap;
-  min-height: 0px;
-  
-  .mdl-card__title {
-    align-items: flex-start;
-    flex-direction: column;
-    flex: 1 auto;
-    float: left;
-  }
-  .mdl-card__title-text {
-    align-self: flex-start;
-  }
-  .mdl-card__media {
-    flex: 0 auto; 
-    float: right;
-    height: 112px;
-    margin: 16px 16px 0 0;
-    width: 112px;
-  }
-  .mdl-card__actions {
-    clear: both;
-    flex: 1 auto; 
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-}
     
 /* Turn off parallax scrolling for tablets and phones */
 @media only screen and (max-device-width: 1024px) {
