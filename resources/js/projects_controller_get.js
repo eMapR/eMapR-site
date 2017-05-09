@@ -6,18 +6,14 @@ myApp.controller('projCtrl', ['$scope', '$http', '$sce', function ($scope, $http
   $http.get('resources/data/projects.json')
   .success(function (data, status, headers, config) {
 	$scope.projects = data;
-	  console.log(data)
+	  //console.log(data)
             
-      $(function() {
-        console.log("I'm in!")
-        $('.box').matchHeight();
-      });
-      
-      
-            //$( window ).on( "load", function() { $.fn.matchHeight._update() })
-            //console.log('updated') 
+    $(function() {
+      //console.log("adjusting height!")
+      $('.box').matchHeight();
+    });
   })
   .error(function (data, status, headers, config) {
-    console.log("dang it! get projects is broken!")
+    console.log("projects_controller_get.js is broken!")
   });
 }]);

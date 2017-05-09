@@ -10,9 +10,6 @@ function toggleFunction() {
 }
 
 
-    
-
-
 /*
 // hide the navbar when scrolling down
 function myFunction() {
