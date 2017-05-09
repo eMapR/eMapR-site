@@ -14,7 +14,9 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<!--<script src="resources/js/people_controller_noget.js"></script>-->
 	<script src="resources/js/projects_controller_get.js"></script>
-	<script src="resources/js/layout.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script src="resources/js/layout.js"></script>
 	<style>
 	</style>
 	<body>
@@ -68,9 +70,11 @@
 
                                     </div>
                                     <b><h3 class="w3-container" style="margin-bottom:0px;">{{ projects[i].name }}</h3></b> <!-- style="position:relative; top:-55px; margin-bottom:-50px"-->
-                                    <div class="w3-container" style='height:320px'>
-                                        <p style="margin-top:5px;">{{ projects[i].descr }}</p>
+                                    <div class="w3-container box"> <!-- style='height:320px'-->
+                                        <p ng-bind-html="$sce.trustAsHtml(projects[i].descr)" style="margin-top:5px;"></p>
+                                        <!---<p style="margin-top:5px;">{{ projects[i].descr }}</p>-->
                                     </div>
+                                    <!-- can bind data with {{ }} or ng-bind-->
 				                </div>
                             </a>
 						</div>
