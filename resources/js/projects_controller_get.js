@@ -7,6 +7,15 @@ myApp.controller('projCtrl', ['$scope', '$http', '$sce', function ($scope, $http
   .success(function (data, status, headers, config) {
 	$scope.projects = data;
 	  console.log(data)
+            
+      $(function() {
+        console.log("I'm in!")
+        $('.box').matchHeight();
+      });
+      
+      
+            //$( window ).on( "load", function() { $.fn.matchHeight._update() })
+            //console.log('updated') 
   })
   .error(function (data, status, headers, config) {
     console.log("dang it! get projects is broken!")

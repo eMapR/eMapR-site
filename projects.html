@@ -16,6 +16,7 @@
 	<script src="resources/js/projects_controller_get.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script src="resources/js/layout.js"></script>
     
 	<style>
 	</style>
@@ -61,7 +62,7 @@
 							ng-if="projects[i].name != null">
 							<!---->
 							<a ng-href='{{ projects[i].url }}' style="text-decoration:none;">
-                                <div class="w3-card-4 w3-section  w3-border">
+                                <div class="w3-card-4 w3-section  w3-border" height=100%>
                                     <div class="w3-display-container w3-hover-opacity">
                                         <img ng-cloak ng-src= '{{ projects[i].img }}' width=100%>
                                         <!--<div class="w3-white w3-opacity-min w3-padding w3-display-bottomleft" style="width:100%; height:45px">
@@ -82,6 +83,9 @@
 				</div>
 			</div>
 		</div>
-	</body>
-    <script src="resources/js/layout.js"></script>
+	
+        <script>
+   
+        </script>  
+    </body>
 </html>

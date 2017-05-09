@@ -9,10 +9,9 @@ function toggleFunction() {
 	}
 }
 
-$(function() {
-    console.log("I'm in!")
-    $('.box').matchHeight();
-});
+
+    
+
 
 /*
 // hide the navbar when scrolling down
