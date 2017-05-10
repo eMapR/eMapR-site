@@ -12,12 +12,12 @@
 	}, {
 		"name": "Landsat Science Team",
 		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
-		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"img": "resources/images/projects/landsat_science_team.svg",
 		"url": "mock.html"
 	}, {
 		"name": "Google Research Award",
 		"descr": "Lorem ipsum dolor sit amet, mi integer eget sollicitudin, porttitor dolor praesent viverra sit tellus, odio ligula adipiscing placerat. Malesuada rhoncus urna, ante mollis arcu tempor sollicitudin nec, in duis vel sed, vestibulum vestibulum vestibulum neque, turpis urna et. Nunc lorem nec morbi lorem, convallis in laoreet interdum ultrices ac, arcu dolor vestibulum facilisis, nibh vitae et montes, aliquet quam ornare quisque vel fermentum. Quis pede mollis, dis sociis, mauris rutrum suspendisse feugiat sed morb",
-		"img": "resources/images/tcb_or_proj_ex.jpg",
+		"img": "resources/images/projects/gee_award.svg",
 		"url": "mock.html"
 	}, {
 		"name": "NPS NCCN Change Labeling",
