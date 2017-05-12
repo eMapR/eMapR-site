@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<title>OSU eMapR Lab | Making Tiles</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="cache-control" content="no-cache">
+	<link rel="shortcut icon" href="../../resources/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">
+	<!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+	<link rel="stylesheet" href="../../vendors/w3.css">
+	<link rel="stylesheet" href="../../resources/css/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="resources/js/layout.js"></script>
+	<style>
+	</style>
+	<body>
+		<div class="w3-top">
+			<ul class="w3-navbar w3-card-2 w3-white" id="myNavbar">
+				<!--class="w3-navbar"-->
+				<li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+					<a class="w3-hover-black" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+					<i class="fa fa-bars"></i>
+					</a>
+				</li>
+				<li class="w3-hide-small"><a href="../../index.html"><i class="fa fa-home"></i> HOME</a></li>
+				<li class="w3-hide-small"><a href="../../people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
+				<!--<li class="w3-hide-small"><a href="../../algorithms.html"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+				<li class="w3-hide-small"><a href="../../projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
+				<!--<li class="w3-hide-small"><a href="../../data.html"><i class="fa fa-database"></i> DATA</a></li>-->
+                <li class="w3-left-align tab-active"><a href="../../education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+				<li class="w3-hide-small"><a href="../../publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+				<li class="w3-hide-small"><a href="../../contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				<li class="w3-hide-small w3-right"><a href="http://oregonstate.edu/" target="_blank" class="w3-hover-grey w3-orange">OSU</a></li>
+			</ul>
+			<!-- Navbar on small screens -->
+			<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+				<ul class="w3-navbar w3-left-align w3-white">
+					<li><a href="index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
+					<!--<li><a href="algorithms.html" onclick="toggleFunction()"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+					<li><a href="projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
+					<!--<li><a href="data.html" onclick="toggleFunction()"><i class="fa fa-database"></i> DATA</a></li>-->
+                    <li><a href="education.html" onclick="toggleFunction()"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+					<li><a href="publication.html" onclick="toggleFunction()"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+					<li><a href="contact.html" onclick="toggleFunction()"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+        <div class="w3-display-container">
+            <div class="w3-content w3-container w3-padding-64" style="background: rgba(255, 255, 255, 0.6);">
+                <h1>Use <b>gdal2tiles</b> to create a tile web service (TWS)</h1>
+                <p>
+                    The <a href="http://www.gdal.org/gdal2tiles.html" target="_blank"><b>gdal2tiles</b></a> utility generates a directory with small tiles and metadata, following the OSGeo Tile Map Service Specification. These tiles and direcrory structure can be used to display your own image overlays on interactive webmap platforms, such as Leaflet, Google Maps, and OpenLayers. It also produced the necessary metadata for Google Earth (KML SuperOverlay) applications. In this tutorical we'll tile up a Landsat image.</p>
+                <h3>Dependecies</h3>
+                <ul>
+                    <li>GDAL</li>
+                    <li>Python</li>
+                    <li>Python bindings for GDAL</li>
+                    <p>*Note that installing all of these peices separatly can be troublesome. The most straight forward way to make sure that you have everything you need is to install <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. The install comes with the OSGeo4W Shell, which allows you to run all GDAL/ORG utilites, including the Python-based ones. On top of that you get a great open-source GIS!
+                </ul>
+                    
+                
+                <h3>Steps</h3>
+                <ol>
+                    <h4><li>Get an image</li></h4>
+                    <p>We'll leave this to you.</p>
+
+                    
+                    <h4><li>Reproject image into <a href="https://en.wikipedia.org/wiki/Web_Mercator" target="_blank">Web Mercator</a> projection</li></h4>
+                    <p>Web mercator is the projection used by interactive webmap platforms - this step will make your image webmap-friendly. We use <a href="http://www.gdal.org/gdalwarp.html" target="_blank">gdalwarp</a> for this, assigning the target projection to EPSG:3857</p>
+                    <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your image lives</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <p>Run <code>gdalwarp</code> on your image</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdalwarp -t_srs EPSG:3857 -r bilinear LE07_017039_20170508.tif LE07_017039_20170508_epsg3857.tif
+                    </div>
+
+                    <h4><li>Subset the image for 1 band grey or 3-band RGB display</li></h4>
+                    <p>We want to show a false color RGB representation of the image. We will use bands 5, 4, and 3 in order of RGB. We'll use gdal_translate to subset those bands in that order using the <em>-b</em> switch to achieve this.</p>
+                    <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your EPSG:3857 Web mercator image lives</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <p>Run <code>gdal_translate</code> on your EPSG:3857 Web mercator image</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdal_translate -b 5 -b 4 -b 3 LE07_017039_20170508_epsg3857.tif LE07_017039_20170508_epsg3857_rgb543.tif
+                    </div>
+                    
+                    <h4><li>Generate the tiles</li></h4>
+                    <p>In this final step we generate the tiles using the gdal2tiles command.</p>
+                    <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your EPSG:3857 Web mercator subset image lives</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <p>Run <code>gdal2tiles</code> on your EPSG:3857 Web mercator subset image</p>
+                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdal2tiles -z 0-13 LE07_017039_20170508_epsg3857_rgb543.tif tiles
+                    </div>
+                    
+                    
+                    
+                    
+                    
+                </ol>
+
+
+
+            </div>
+        </div>
+
+	</body>
+</html>
