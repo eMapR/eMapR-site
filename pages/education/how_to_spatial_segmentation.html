@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<title>OSU eMapR Lab | Spatial Segmentation</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="cache-control" content="no-cache">
+	<link rel="shortcut icon" href="../../resources/images/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../../resources/images/favicon.ico" type="image/x-icon">
+	<!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+	<link rel="stylesheet" href="../../vendors/w3.css">
+	<link rel="stylesheet" href="../../resources/css/style.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="resources/js/layout.js"></script>
+	<style>
+	</style>
+	<body>
+		<div class="w3-top">
+			<ul class="w3-navbar w3-card-2 w3-white" id="myNavbar">
+				<!--class="w3-navbar"-->
+				<li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+					<a class="w3-hover-black" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+					<i class="fa fa-bars"></i>
+					</a>
+				</li>
+				<li class="w3-hide-small"><a href="../../index.html"><i class="fa fa-home"></i> HOME</a></li>
+				<li class="w3-hide-small"><a href="../../people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
+				<!--<li class="w3-hide-small"><a href="../../algorithms.html"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+				<li class="w3-hide-small"><a href="../../projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
+				<!--<li class="w3-hide-small"><a href="../../data.html"><i class="fa fa-database"></i> DATA</a></li>-->
+                <li class="w3-left-align tab-active"><a href="../../education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+				<li class="w3-hide-small"><a href="../../publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+				<li class="w3-hide-small"><a href="../../contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				<li class="w3-hide-small w3-right"><a href="http://oregonstate.edu/" target="_blank" class="w3-hover-grey w3-orange">OSU</a></li>
+			</ul>
+			<!-- Navbar on small screens -->
+			<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+				<ul class="w3-navbar w3-left-align w3-white">
+					<li><a href="index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
+					<!--<li><a href="algorithms.html" onclick="toggleFunction()"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+					<li><a href="projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
+					<!--<li><a href="data.html" onclick="toggleFunction()"><i class="fa fa-database"></i> DATA</a></li>-->
+                    <li><a href="education.html" onclick="toggleFunction()"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+					<li><a href="publication.html" onclick="toggleFunction()"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+					<li><a href="contact.html" onclick="toggleFunction()"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+        <div class="w3-display-container">
+            <div class="w3-content w3-container w3-padding-64" style="background: rgba(255, 255, 255, 0.6);">
+                <h1>Spatial segmentation of image data</h1>
+                <p>
+                    This demonstration will walk through the steps to segment image data derived from Landsat satellite imagery using python's scikit-image library. The example data is predicted biomass for a research forest in western Oregon. The goal is to create a zone map of areas of similar biomass levels for calculating summary statistics on</p>
+                <h3>Dependecies</h3>
+                <ul>
+                    <li>GDAL</li>
+                    <li>Numpy</li>
+                    <li>skimage</li>
+                    <li>matplotlib</li>
+                </ul>
+                
+                <h3>Steps</h3>
+                <ol>
+                    <h4><li>Load libraries</li></h4>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+import numpy as np
+from skimage import segmentation, color, io
+from skimage.future import graph
+from skimage.segmentation import mark_boundaries
+from matplotlib import pyplot as plt</pre>   
+                
+                    <h4><li>Define Functions</li></h4>
+                    <h5>Callback to handle merging nodes by recomputing mean color</h5>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+def weight_mean_color(graph, src, dst, n):
+  diff = graph.node[dst]['mean color'] - graph.node[n]['mean color']
+  diff = np.linalg.norm(diff)
+  return {'weight': diff}</pre>
+                
+                    <h5>Callback called before merging two nodes of a mean color distance graph</h5>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+def merge_mean_color(graph, src, dst):
+  graph.node[dst]['total color'] += graph.node[src]['total color']
+  graph.node[dst]['pixel count'] += graph.node[src]['pixel count']
+  graph.node[dst]['mean color'] = (graph.node[dst]['total color'] /
+                                   graph.node[dst]['pixel count'])</pre>
+                
+                    <h5>Function to stretch and compress image for viewing</h5>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+def make_display_image(img, bgPixels):
+  img[bgPixels] = np.nan
+  imgMean = np.nanmean(img)
+  imgStd = np.nanstd(img)
+  imgMinOrig = np.nanmin(img)
+  imgMinCalc = imgMean-(imgStd*2)
+  if imgMinCalc < imgMinOrig:
+    imgMin = imgMinOrig
+  else:
+    imgMin = imgMinCalc
+  img[bgPixels] = imgMin
+  imgMax = imgMean+(imgStd*2)
+  img[img < imgMin] = imgMin
+  img[img > imgMax] = imgMax
+  img = np.round( ( (img-imgMin) / (imgMax-imgMin+0.0) ) *255).astype(np.uint8)
+  return img</pre>
+                
+                
+                    <p>activate the gdal plugin</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">io.use_plugin('gdal')</pre>
+                
+                    <p>define the image filename</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">fn = '/vol/v1/proj/cmonster/lidar/lt_lidar_comparison/aggregated/rasters/hja_lidar_biomass_reproject_nearest_masked_1x1.bsq'</pre>
+                
+                    <p>set background value</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">bgValue = -9999</pre>
+
+                    <p>read in the image</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">img = io.imread(fn)</pre>
+                
+                    <p>get the index of the background pixels</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">bgPixels = np.where(img == bgValue)</pre>
+                
+                    <p>create the display image</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+displyImg = make_display_image(img, bgPixels)
+plt.imshow(displyImg, cmap='gray')</pre>
+                
+                    <h5>Prepare the image for segmentation</h5>
+                    <p>This step compresses the image value range and moves the background pixel value closer to the resest of the data, but far enough away to define a distinct boundary between image data and background. This is a subjective processes and will liekly need to be iterated until satisfying results are obtained. In the first line we reset the background value, which is originally -9999 to -100 and in the second line we
+                    </p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+img[bgPixels] = -100
+img = np.round( ( (img-np.min(img)) / (np.max(img)-np.min(img)+0.0) ) * 600)</pre>
+                
+
+                </ol>
+
+
+                    
+                    
+                    
+                    
+                    
+
+
+
+
+            </div>
+        </div>
+
+	</body>
+</html>
