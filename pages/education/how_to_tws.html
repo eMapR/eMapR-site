@@ -13,8 +13,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
 	<script src="resources/js/layout.js"></script>
-	<style>
-	</style>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-99603309-2', 'auto');
+      ga('send', 'pageview');
+    </script>
 	<body>
 		<div class="w3-top">
 			<ul class="w3-navbar w3-card-2 w3-white" id="myNavbar">
@@ -59,49 +66,34 @@
                     <li>Python</li>
                     <li>Python bindings for GDAL</li>
                     <p>*Note that installing all of these peices separatly can be troublesome. The most straight forward way to make sure that you have everything you need is to install <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. The install comes with the OSGeo4W Shell, which allows you to run all GDAL/ORG utilites, including the Python-based ones. On top of that you get a great open-source GIS!
-                </ul>
-                    
-                
+                </ul> 
                 <h3>Steps</h3>
                 <ol>
                     <h4><li>Get an image</li></h4>
                     <p>We'll leave this to you.</p>
-
-                    
+         
                     <h4><li>Reproject image into <a href="https://en.wikipedia.org/wiki/Web_Mercator" target="_blank">Web Mercator</a> projection</li></h4>
                     <p>Web mercator is the projection used by interactive webmap platforms - this step will make your image webmap-friendly. We use <a href="http://www.gdal.org/gdalwarp.html" target="_blank">gdalwarp</a> for this, assigning the target projection to EPSG:3857</p>
                     <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your image lives</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">cd /mock/demo/</pre>
                     <p>Run <code>gdalwarp</code> on your image</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdalwarp -t_srs EPSG:3857 -r bilinear LE07_017039_20170508.tif LE07_017039_20170508_epsg3857.tif
-                    </div>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">gdalwarp -t_srs EPSG:3857 -r bilinear LE07_017039_20170508.tif LE07_017039_20170508_epsg3857.tif</pre>
 
                     <h4><li>Subset the image for 1 band grey or 3-band RGB display</li></h4>
                     <p>We want to show a false color RGB representation of the image. We will use bands 5, 4, and 3 in order of RGB. We'll use gdal_translate to subset those bands in that order using the <em>-b</em> switch to achieve this.</p>
                     <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your EPSG:3857 Web mercator image lives</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">cd /mock/demo/</pre>
                     <p>Run <code>gdal_translate</code> on your EPSG:3857 Web mercator image</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdal_translate -b 5 -b 4 -b 3 LE07_017039_20170508_epsg3857.tif LE07_017039_20170508_epsg3857_rgb543.tif
-                    </div>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">gdal_translate -b 5 -b 4 -b 3 LE07_017039_20170508_epsg3857.tif LE07_017039_20170508_epsg3857_rgb543.tif</pre>
                     
                     <h4><li>Generate the tiles</li></h4>
                     <p>In this final step we generate the tiles using the gdal2tiles command.</p>
                     <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your EPSG:3857 Web mercator subset image lives</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">cd /mock/demo/</pre>
                     <p>Run <code>gdal2tiles</code> on your EPSG:3857 Web mercator subset image</p>
-                    <div style="overflow-x:scroll; white-space:nowrap" class="w3-code w3-light-grey notranslate">gdal2tiles -z 0-13 LE07_017039_20170508_epsg3857_rgb543.tif tiles
-                    </div>
-                    
-                    
-                    
-                    
-                    
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">gdal2tiles -z 0-13 LE07_017039_20170508_epsg3857_rgb543.tif tiles</pre>
                 </ol>
-
-
-
             </div>
         </div>
-
 	</body>
 </html>
