@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+  <head>
+
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+<style>
+    /*
+ * This file is NOT needed in order to use skrollr.
+ * The demo uses it and it may help you as well.
+ */
+
+
+html, body {
+	width:100%;
+	height:100%;
+	padding:0;
+	margin:0;
+	overflow-x:hidden;
+}
+
+.skrollable {
+	/*
+	 * First-level skrollables are positioned relative to window
+	 */
+	position:fixed;
+
+	/*
+	 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
+	 */
+	z-index:100;
+}
+
+.skrollr-mobile .skrollable {
+	/*
+		May cause issues on Android default browser (see #331 on GitHub).
+	*/
+	position:absolute;
+}
+
+.skrollable .skrollable {
+	/*
+	 * Second-level skrollables are positioned relative their parent skrollable
+	 */
+	position:absolute;
+}
+
+.skrollable .skrollable .skrollable {
+	/*
+	 * Third-level (and below) skrollables are positioned static
+	 */
+	position:static;
+}
+    
+    
+    #transform {
+	width:70%;
+	left:50%;
+	top:20%;
+	margin-left:-35%;
+	text-align:center;
+	font-size:150%;
+
+}
+    
+    #easing {
+	top:10%;
+    left:20%;
+	width:50%;
+	z-index:101;
+    }
+    .wrapper{
+        width: 100%;
+        height: 100%;
+    }
+    
+/*    
+    .center-junk{
+        left:50%; 
+        width: 70%; 
+        margin-left:-35%; 
+        text-align: center
+    }
+    
+    .center-m-junk{
+        left:50%; 
+        width: 50%; 
+        margin-left:-25%; 
+        text-align: center
+    }
+    
+    .con-med-junl{
+        left:50%; 
+        width: 50%; 
+        margin-left:-25%; 
+    }
+        
+    .center-text{
+        
+    }
+*/
+    
+    .center-h{
+        position: absolute !important; 
+        left: 50%;
+        transform: translate(-50%);
+    }
+    .center{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    
+
+
+      </style>
+  </head>
+  <body>
+
+      
+
+    <div class="skrollable wrapper">
+        <div class="skrollable center" data-0="opacity:1;" data-1000 data-1500="opacity:0;">
+            <h1><b>LandTrendr</b></h1>
+            <img src="../../resources/images/algorithms/lt_logo.svg">
+            <h2 class="" data-50="opacity:0;" data-700="opacity:1;" data-1000 data-1500="opacity:0;">Landsat-based Detection of Trends in Disturbance and Recovery</h2>
+        </div>
+    </div>
+      
+    <div class="skrollable wrapper">
+        <div class="skrollable center">
+            <p data-1400="opacity:0;" data-1600="opacity:1;" data-3800 data-4000="opacity:0;">A data reduction algorithm that identifies the dominate components in noisy satellite image time series.</p>
+            <div style="height:200px">
+                <img class="center-h" data-2000="opacity:0;" data-2300="opacity:1;" data-3000 data-3400="opacity:0;" src="../../resources/images/algorithms/noise.svg">
+                <img class="center-h" data-2500="opacity:0;" data-2900="opacity:1;" data-3800 data-4000="opacity:0;" src="../../resources/images/algorithms/signal.svg">
+            </div>
+        </div> 
+    </div>  
+      
+      
+    <div class="skrollable wrapper">
+        <div class="skrollable center">
+            <p data-3900="opacity:0;" data-4100="opacity:1;" data-6700 data-6900="opacity:0;">Landsat sensors collect reflected radiation, which is translated into image data</p>
+            <div style="height:300px">
+                <img class="center-h" data-4300="opacity:0;" data-4600="opacity:1;" data-5300 data-5700="opacity:0;" src="../../resources/images/projects/landsat_science_team.svg">
+                <img class="center-h" data-5300="opacity:0;" data-5700="opacity:1;" data-6700 data-6900="opacity:0;" src="../../resources/images/algorithms/img.jpg">
+            </div>
+        </div> 
+    </div> 
+     
+    <div class="skrollable wrapper" data-6800="opacity:0;" data-7000="opacity:1;" data-13400 data-13600="opacity:0;">
+        <div class="skrollable center">
+            <p>...but depending on 
+                <span data-7400="!opacity:0;" data-7401="opacity:1;"><b>atmosphere</b>,</span> 
+                <span data-8400="!opacity:0;" data-8401="opacity:1;"><b>phenology</b>,</span> 
+                <span data-9400="!opacity:0;" data-9401="opacity:1;">and <b>sun angle</b></span> 
+                <span data-10400="!opacity:0;" data-10401="opacity:1;">images can be</span> 
+                <span data-11400="!opacity:0;" data-11401="opacity:1;"><b>brighter</b>,</span> 
+                <span data-12400="!opacity:0;" data-12401="opacity:1;">or <b>darker</b>,</span></p>
+            <div style="height:300px">
+                <img class="center-h" data-7400="!opacity:0;" data-7401="opacity:1;" data-8400 data-8401="!opacity:0;" src="../../resources/images/algorithms/atmosphere.svg">
+                <img class="center-h" data-8400="!opacity:0;" data-8401="opacity:1;" data-9400 data-9401="!opacity:0;" src="../../resources/images/algorithms/phenology.svg">
+                <img class="center-h" data-9400="!opacity:0;" data-9401="opacity:1;" data-10400 data-10401="!opacity:0;" src="../../resources/images/algorithms/sun_angle.svg">
+                <img class="center-h" data-10400="!opacity:0;" data-10401="opacity:1;" data-11400 data-11401="!opacity:0;" src="../../resources/images/algorithms/img.jpg">
+                <img class="center-h" data-11400="!opacity:0;" data-11401="opacity:0.4;" data-12400 data-12401="!opacity:0;"src="../../resources/images/algorithms/img.jpg">
+                <img class="center-h" data-12400="!opacity:0;" data-12401="opacity:1;" data-13400 data-13600="!opacity:0;" src="../../resources/images/algorithms/img.jpg" style="filter: brightness(60%);">
+            </div>
+        </div> 
+    </div> 
+      
+    <div class="skrollable wrapper" data-13500="opacity:0;" data-13800="opacity:1;" data-15500 data-15500="opacity:0;">
+        <div class="skrollable center">
+            <p>As such, a given image pixel's spectral-temporal profile can be quite variable.</p>
+            <div style="height:300px">
+                <img class="center-h" data-13800="!opacity:0;" data-13900="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series14.svg">
+                <img class="center-h" data-13900="!opacity:0;" data-14000="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series13.svg">
+                <img class="center-h" data-14000="!opacity:0;" data-14100="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series12.svg">
+                <img class="center-h" data-14100="!opacity:0;" data-14200="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series11.svg">
+                <img class="center-h" data-14200="!opacity:0;" data-14300="opacity:1;" data-15500 data-15500="!opacity:0;"src="../../resources/images/algorithms/time_series10.svg">
+                <img class="center-h" data-14300="!opacity:0;" data-14400="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series9.svg">
+                <img class="center-h" data-14400="!opacity:0;" data-14500="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series8.svg">
+                <img class="center-h" data-14500="!opacity:0;" data-14600="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series7.svg">
+                <img class="center-h" data-14600="!opacity:0;" data-14700="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series6.svg">
+                <img class="center-h" data-14700="!opacity:0;" data-14800="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series5.svg">
+                <img class="center-h" data-14800="!opacity:0;" data-14900="opacity:1;" data-15500 data-15500="!opacity:0;"src="../../resources/images/algorithms/time_series4.svg">
+                <img class="center-h" data-14900="!opacity:0;" data-15000="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series3.svg">
+                <img class="center-h" data-15000="!opacity:0;" data-15100="opacity:1;" data-15500 data-15500="!opacity:0;"src="../../resources/images/algorithms/time_series2.svg">
+                <img class="center-h" data-15100="!opacity:0;" data-15200="opacity:1;" data-15500 data-15500="!opacity:0;" src="../../resources/images/algorithms/time_series1.svg">
+            </div>
+    </div> 
+      
+
+      
+
+      
+<!--   
+<div class="scrollable center-m" id="logo" data-1500="opacity:0;" data-1700="opacity:1;"  data-2700="opacity:1;" data-3000="opacity:0;"style="margin-top:25%;">
+
+</div>
+
+
+      
+      
+      
+<div class="scrollable con-med" id="logo" data-3000="opacity:0;" data-3300="opacity:1;" data-3800="opacity:1;" data-4000="opacity:0;"style="margin-top:25%;">
+    <p>Landsat has been collecting image data from 1972 to the present.</p>
+    <img src="../../resources/images/algorithms/satellite_orbiting.svg">
+</div>
+
+      
+      
+<!--      
+<div class="scrollable con-med" id="logo" data-4000="opacity:0;" data-9000="opacity:1;" data-4800="opacity:1;" data-5000="opacity:0;"style="margin-top:25%;">
+    <p>Which ends up being a lot of images!!!</p>
+   
+</div>
+
+<div id="easing_wrapper" data-0="display:none;" data-4300="display:block;">
+<img class="skrollable" data-4300="bottom[wtf]:100%;" data-5000="bottom:0%;" style="left: 55%;" src="../../resources/images/algorithms/wtf_img.jpg">
+
+</div>
+      -->
+
+    
+
+    
+<!--<div id="easing" data-200="opacity:0;" data-500="opacity:1;" data-1200 data-1700="opacity:0;" class="skrollable" style="opacity: 0;">
+		<h2>transform</h2>
+		<p>scale, skew and rotate the sh** out of any element</p>
+	</div>
+      <div id="properties" data-1000="top:100%;" data-2200="top:0%;" data-3000="display:block;" data-3700="top:-100%;display:none;" class="skrollable" style="top: 0%; display: block;">
+		<h2>all numeric properties</h2>
+		<p>width, height, padding, font-size, z-index, blah blah blah</p>
+	</div>
+
+
+
+		<div class="skrollable" data-3000="bottom[wtf]:100%;" data-5000="bottom:0%;" style="left: 55%">WTF</div>
+-->
+
+	<script type="text/javascript" src="../../vendors/skrollr.min.js"></script>
+	<script type="text/javascript">
+	   var s = skrollr.init({
+	easing: {
+		//This easing will sure drive you crazy
+		wtf: Math.random,
+		inverted: function(p) {
+			return 1 - p;
+		}
+	}
+});
+	</script>
+  </body>
+</html>
