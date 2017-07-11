@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>STEM NLCD Examples</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            .space{
+                padding-top: 20px;
+                margin-bottom: 1000px;
+            }
+            
+            .planted{
+                background-color:#CC9900;
+            }
+
+            .developed{
+                background-color:#ff0000;
+            }
+
+            .water{
+                background-color:#5475A8;
+            }
+
+            .white{
+                background-color:#ffffff;
+            }
+
+            .barren{
+                background-color:#cccccc;
+            }
+
+            .agriculture{
+                background-color:#996633;
+            }
+
+            .ice{
+                background-color:#ffffff;
+            }
+
+            .nodata{
+                background-color:#ffffff;
+            }
+
+            .lowintensity{
+                background-color:#E8D1D1;
+            }
+
+            .highintensity{
+                background-color:#E29E8C;
+            }
+
+            .transportation{
+                background-color:#E5564E;
+            }
+
+            .barerock{
+                background-color:#D2CDC0;
+            }
+
+            .transitional{
+                background-color:#533E76;
+            }
+
+            .devhighintensity{
+                background-color:#B50000;
+            }
+
+            .shrubland{
+                background-color:#DCCA8F;
+            }
+
+            .sedge{
+                background-color:#D1D182;
+            }
+
+            .lichens{
+                background-color:#A3CC51;
+            }
+
+            .moss{
+                background-color:#82BA9E;
+            }
+
+            .orchards{
+                background-color:#BBAE76;
+            }
+
+            .grasslands{
+                background-color:#FDE9AA;
+            }
+
+            .dwarf{
+                background-color:#AF963C;
+            }
+
+            .pasture{
+                background-color:#FBF65D;
+            }
+
+            .rowcrops{
+                background-color:#CA9146;
+            }
+
+            .smallgrain{
+                background-color:#796C4A;
+            }
+
+            .urbangrass{
+                background-color:#F09C36;
+            }
+
+            .woodywetlands{
+                background-color:#C8E6F8;
+            }
+
+            .emergentwetlands{
+                background-color:#64B3D5;
+            }
+
+            .rlc_purple{
+                background-color:#FF00FF;
+            }
+
+            .forest{
+                background-color:#339966;
+            }
+
+            .deciduous{
+                background-color:#85C77E;
+            }
+
+            .evergreen{
+                background-color:#38814E;
+            }
+
+            .mixed{
+                background-color:#D4E7B0;
+            }
+
+            .herbaceous{
+                background-color:#666633;
+            }
+            .nonwood{
+                background-color:#808000;
+            }
+
+            .wetlands{
+                background-color: #95BFBF;
+            }
+        </style>
+</head>
+    <body>
+
+        <!-- Sidebar -->
+        <div class="w3-sidebar w3-bar-block" style="width:225px; margin-top:100px;">
+            <a href="#conus_nlcd" class="w3-bar-item w3-button">CONUS NLCD</a>
+            <a href="#dc" class="w3-bar-item w3-button">Washington DC Suburbs</a>
+            <a href="#orlando" class="w3-bar-item w3-button">Orlando, FL</a>
+            <a href="#houston" class="w3-bar-item w3-button">Houston, TX</a>
+            <a href="#denver" class="w3-bar-item w3-button">Denver, CO</a>
+            <a href="#sacramento" class="w3-bar-item w3-button">Sacramento, CA</a>
+            <a href="#saltlake" class="w3-bar-item w3-button">Salt Lake City, UT</a>
+            <a href="#phoenix" class="w3-bar-item w3-button">Phoenix, AZ</a>
+            
+
+        </div>
+        
+        <div class="w3-sidebar w3-bar-block" style="width:250px; right:0; margin-top:100px;">
+            <table style="width:250px;">
+                <!--<tr><td valign="top" class="white">Water</td></tr>-->
+                <tr><td valign="top" class="water" align="left">Open Water</td></tr>
+                <tr><td valign="top" class="white" align="left">Perennial Ice/Snow</td></tr>
+                <!--<tr><td valign="top" class="white">Developed</td></tr>-->
+                <tr><td valign="top" class="lowintensity" align="left">Developed, Open Space</td></tr>
+                <tr><td valign="top" class="highintensity" align="left">Developed, Low Intensity</td></tr>
+                <tr><td valign="top" class="developed" align="left">Developed, Medium Intensity </td></tr>
+                <tr><td valign="top" class="devhighintensity" align="left">Developed High Intensity</td></tr>
+                <!--<tr><td valign="top" class="white">Barren</td></tr>-->
+                <tr><td valign="top" class="barerock" align="left">Barren Land (Rock/Sand/Clay) </td></tr>
+                <!--<tr><td valign="top" class="white">Forest</td></tr>-->
+                <tr><td valign="top" class="deciduous" align="left">Deciduous Forest</td></tr>
+                <tr><td valign="top" class="evergreen" align="left">Evergreen Forest</td></tr>
+                <tr><td valign="top" class="mixed" align="left">Mixed Forest</td></tr>
+                <!--<tr><td valign="top" class="white">Shrubland</td></tr>-->
+                <tr><td valign="top" class="dwarf" align="left">Dwarf Scrub</td></tr>
+                <tr><td valign="top" class="shrubland" align="left">Shrub/Scrub</td></tr>
+                <!--<tr><td valign="top" class="white" >Herbaceous </td></tr>-->
+                <tr><td valign="top" class="grasslands" align="left">Grassland/Herbaceous</td></tr>
+                <tr><td valign="top" class="sedge" align="left">Sedge/Herbaceous</td></tr>
+                <!--<tr><td valign="top" class="lichens" align="left">Lichens</td></tr>-->
+                <!--<tr><td valign="top" class="moss" align="left">Moss</td></tr>-->
+                <!--<tr><td valign="top" class="white">Planted/Cultivated</td></tr>-->
+                <tr><td valign="top" class="pasture" align="left">Pasture/Hay</td></tr>
+                <tr><td valign="top" class="rowcrops" align="left">Cultivated Crops </td></tr>
+                <!--<tr><td valign="top" class="white">Wetlands</td></tr>-->
+                <tr><td valign="top" class="woodywetlands" align="left">Woody Wetlands</td></tr>
+                <tr><td valign="top" class="emergentwetlands" align="left">Emergent Herbaceous Wetlands</td></tr>
+            </table>
+        </div>
+
+
+
+        <!-- Page Content -->
+        <div style="margin-left:0%">
+            <div id="conus_nlcd" class="space">
+                <h1 class="w3-center">CONUS NLCD</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="conus_nlcd_1990_2016.webm" type="video/webm">
+                  <source src="conus_nlcd_1990_2016.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="dc" class="space">
+                <h1 class="w3-center">Washington DC Suburbs</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="dc.webm" type="video/webm">
+                  <source src="dc.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="orlando" class="space">
+                <h1 class="w3-center">Orlando, FL</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="orlando.webm" type="video/webm">
+                  <source src="orlando.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="houston" class="space">
+                <h1 class="w3-center">Houston, TX</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="houston.webm" type="video/webm">
+                  <source src="houston.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="denver" class="space">
+                <h1 class="w3-center">Denver, CO</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="denver.webm" type="video/webm">
+                  <source src="denver.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="sacramento" class="space">
+                <h1 class="w3-center">Sacramento, CA</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="sacramento.webm" type="video/webm">
+                  <source src="sacramento.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="saltlake" class="space">
+                <h1 class="w3-center">Salt Lake City, UT</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="saltlake.webm" type="video/webm">
+                  <source src="saltlake.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+            <div id="phoenix" class="space">
+                <h1 class="w3-center">Phoenix, AZ</h1>
+                <video autoplay loop controls style="display: block; margin: auto;">
+                  <source src="phoenix.webm" type="video/webm">
+                  <source src="phoenix.mp4" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+            </div>
+
+        </div>
+      
+    </body>
+</html>
