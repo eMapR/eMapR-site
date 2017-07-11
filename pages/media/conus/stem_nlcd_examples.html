@@ -387,7 +387,7 @@
 
         <script>
             $("#selection a").click(function(){
-                var index = $(this).index();
+                var index = $("#selection a").index($(this));
                 $(".vid_holder").hide();
                 $(".vid_holder video")[0].pause();
                 $(".vid_holder").eq(index).show();
