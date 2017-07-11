@@ -21,22 +21,6 @@
             ga('send', 'pageview');
         </script>
         <style>
-            #logo{
-                position:absolute;
-                height:50px;
-                width:auto;
-                left:15px;
-                top:15px;
-            }
-            
-            .hidden{
-                display:none;
-            }
-            
-            .space{
-                padding-top: 20px;
-            }
-            
             .planted{
                 background-color:#CC9900;
             }
@@ -175,67 +159,117 @@
             .wetlands{
                 background-color: #95BFBF;
             }
+            
+            
+            #logo{
+                position: absolute;
+                height: 50px;
+                width: auto;
+                left: 15px;
+                top: 15px;
+            }
+            
+            td{
+                font-size: 12px!important;
+                padding-left: 5px;
+                padding-top: 4px;
+                padding-bottom: 2px;
+            }
+            
+            video{
+                max-width: 100%;
+                height: auto;
+            }
+            
+            .hidden{
+                display: none;
+            }
+            
+            .space{
+                padding-top: 20px;
+            }
+            
+            #legend{
+                position: fixed;
+                right: 0px;
+                top: 100px;
+                z-index: 1;
+            }
+            
+            #selection{
+                position: fixed;
+                left: 0px;
+                top: 100px;
+                width: 225px;
+                z-index: 1;
+            }
+            
+            table{
+                border-collapse: collapse;
+                width: 205px;
+            }
+            
+            .header{
+                display: none;
+            }
+            
+            @media only screen and (max-width: 1450px) {
+                #conus_nlcd_vid {
+                    width: 800px;
+                    height: auto;
+                }
+            }
+            
+            @media only screen and (max-width: 1250px) {
+                #conus_nlcd_vid {
+                    width: 700px;
+                    height: auto;
+                }
+                video {
+                    width: 700px;
+                    height: auto;
+                }
+            }
+            
+            @media only screen and (max-width: 1150px) {
+                video {
+                    margin: 5px;
+                    
+                }
+                #legend {
+                    width:100%;
+                    position: relative;
+                    top: 0px;
+                    z-index:0;
+                }
+                td {
+                    padding-left: 15px;
+                }
+                #selection {
+                    width:100%;
+                    top: 0px;
+                    position: relative;
+                    
+                    z-index:0;
+                }
+                table {
+                    width: 100%;
+                }
+                .header{
+                    display: block;
+                    padding-left: 5px;
+                }
+            }
+
         </style>
 </head>
     <body>
         <a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="../../../resources/images/graphic_logo_text.svg"></a>
-        <!-- Sidebar -->
-        <div id="selection" class="w3-sidebar w3-bar-block" style="width:225px; margin-top:100px;">
-            <a href="#conus_nlcd" class="w3-bar-item w3-button">CONUS NLCD</a>
-            <a href="#dc" class="w3-bar-item w3-button">Washington DC Suburbs</a>
-            <a href="#orlando" class="w3-bar-item w3-button">Orlando, FL</a>
-            <a href="#houston" class="w3-bar-item w3-button">Houston, TX</a>
-            <a href="#denver" class="w3-bar-item w3-button">Denver, CO</a>
-            <a href="#sacramento" class="w3-bar-item w3-button">Sacramento, CA</a>
-            <a href="#saltlake" class="w3-bar-item w3-button">Salt Lake City, UT</a>
-            <a href="#phoenix" class="w3-bar-item w3-button">Phoenix, AZ</a>
-            <!--
-            <br>
-            <a href="#phoenix" class="w3-bar-item w3-button"><Strong>Stop Playback</Strong></a>
-            -->
-            
-        </div>
         
-        <div class="w3-sidebar w3-bar-block" style="width:250px; right:0; margin-top:100px;">
-            <table style="width:250px;">
-                <!--<tr><td valign="top" class="white">Water</td></tr>-->
-                <tr><td valign="top" class="water" align="left">Open Water</td></tr>
-                <tr><td valign="top" class="white" align="left">Perennial Ice/Snow</td></tr>
-                <!--<tr><td valign="top" class="white">Developed</td></tr>-->
-                <tr><td valign="top" class="lowintensity" align="left">Developed, Open Space</td></tr>
-                <tr><td valign="top" class="highintensity" align="left">Developed, Low Intensity</td></tr>
-                <tr><td valign="top" class="developed" align="left">Developed, Medium Intensity </td></tr>
-                <tr><td valign="top" class="devhighintensity" align="left">Developed High Intensity</td></tr>
-                <!--<tr><td valign="top" class="white">Barren</td></tr>-->
-                <tr><td valign="top" class="barerock" align="left">Barren Land (Rock/Sand/Clay) </td></tr>
-                <!--<tr><td valign="top" class="white">Forest</td></tr>-->
-                <tr><td valign="top" class="deciduous" align="left">Deciduous Forest</td></tr>
-                <tr><td valign="top" class="evergreen" align="left">Evergreen Forest</td></tr>
-                <tr><td valign="top" class="mixed" align="left">Mixed Forest</td></tr>
-                <!--<tr><td valign="top" class="white">Shrubland</td></tr>-->
-                <tr><td valign="top" class="dwarf" align="left">Dwarf Scrub</td></tr>
-                <tr><td valign="top" class="shrubland" align="left">Shrub/Scrub</td></tr>
-                <!--<tr><td valign="top" class="white" >Herbaceous </td></tr>-->
-                <tr><td valign="top" class="grasslands" align="left">Grassland/Herbaceous</td></tr>
-                <tr><td valign="top" class="sedge" align="left">Sedge/Herbaceous</td></tr>
-                <!--<tr><td valign="top" class="lichens" align="left">Lichens</td></tr>-->
-                <!--<tr><td valign="top" class="moss" align="left">Moss</td></tr>-->
-                <!--<tr><td valign="top" class="white">Planted/Cultivated</td></tr>-->
-                <tr><td valign="top" class="pasture" align="left">Pasture/Hay</td></tr>
-                <tr><td valign="top" class="rowcrops" align="left">Cultivated Crops </td></tr>
-                <!--<tr><td valign="top" class="white">Wetlands</td></tr>-->
-                <tr><td valign="top" class="woodywetlands" align="left">Woody Wetlands</td></tr>
-                <tr><td valign="top" class="emergentwetlands" align="left">Emergent Herbaceous Wetlands</td></tr>
-            </table>
-        </div>
-
-
-
-        <!-- Page Content -->
-        <div style="margin-left:0%">
+        <div>
             <div id="conus_nlcd" class="space vid_holder">
                 <h1 class="w3-center">CONUS NLCD</h1>
-                <video autoplay loop style="display: block; margin: auto;">
+                <video id="conus_nlcd_vid" autoplay loop style="display: block; margin: auto;">
                   <source src="conus_nlcd_1990_2016.webm" type="video/webm">
                   <source src="conus_nlcd_1990_2016.mp4" type="video/mp4">
                   Your browser does not support the video tag.
@@ -298,6 +332,59 @@
                 </video>
             </div>
         </div>
+        
+        
+        <div id="selection" class="w3-bar-block">
+            <h3 class="header">Selection</h3>
+            <a href="#conus_nlcd" class="w3-bar-item w3-button">CONUS NLCD</a>
+            <a href="#dc" class="w3-bar-item w3-button">Washington DC Suburbs</a>
+            <a href="#orlando" class="w3-bar-item w3-button">Orlando, FL</a>
+            <a href="#houston" class="w3-bar-item w3-button">Houston, TX</a>
+            <a href="#denver" class="w3-bar-item w3-button">Denver, CO</a>
+            <a href="#sacramento" class="w3-bar-item w3-button">Sacramento, CA</a>
+            <a href="#saltlake" class="w3-bar-item w3-button">Salt Lake City, UT</a>
+            <a href="#phoenix" class="w3-bar-item w3-button">Phoenix, AZ</a>
+            <!--
+            <br>
+            <a href="#phoenix" class="w3-bar-item w3-button"><Strong>Stop Playback</Strong></a>
+            -->
+            
+        </div>
+        
+        <div id="legend">
+            <h3 class="header">Legend</h3>
+            <table>
+                <!--<tr><td valign="top" class="white">Water</td></tr>-->
+                <tr><td valign="top" class="water" align="left">Open Water</td></tr>
+                <tr><td valign="top" class="white" align="left">Perennial Ice/Snow</td></tr>
+                <!--<tr><td valign="top" class="white">Developed</td></tr>-->
+                <tr><td valign="top" class="lowintensity" align="left">Developed, Open Space</td></tr>
+                <tr><td valign="top" class="highintensity" align="left">Developed, Low Intensity</td></tr>
+                <tr><td valign="top" class="developed" align="left">Developed, Medium Intensity </td></tr>
+                <tr><td valign="top" class="devhighintensity" align="left">Developed High Intensity</td></tr>
+                <!--<tr><td valign="top" class="white">Barren</td></tr>-->
+                <tr><td valign="top" class="barerock" align="left">Barren Land (Rock/Sand/Clay) </td></tr>
+                <!--<tr><td valign="top" class="white">Forest</td></tr>-->
+                <tr><td valign="top" class="deciduous" align="left">Deciduous Forest</td></tr>
+                <tr><td valign="top" class="evergreen" align="left">Evergreen Forest</td></tr>
+                <tr><td valign="top" class="mixed" align="left">Mixed Forest</td></tr>
+                <!--<tr><td valign="top" class="white">Shrubland</td></tr>-->
+                <tr><td valign="top" class="dwarf" align="left">Dwarf Scrub</td></tr>
+                <tr><td valign="top" class="shrubland" align="left">Shrub/Scrub</td></tr>
+                <!--<tr><td valign="top" class="white" >Herbaceous </td></tr>-->
+                <tr><td valign="top" class="grasslands" align="left">Grassland/Herbaceous</td></tr>
+                <tr><td valign="top" class="sedge" align="left">Sedge/Herbaceous</td></tr>
+                <!--<tr><td valign="top" class="lichens" align="left">Lichens</td></tr>-->
+                <!--<tr><td valign="top" class="moss" align="left">Moss</td></tr>-->
+                <!--<tr><td valign="top" class="white">Planted/Cultivated</td></tr>-->
+                <tr><td valign="top" class="pasture" align="left">Pasture/Hay</td></tr>
+                <tr><td valign="top" class="rowcrops" align="left">Cultivated Crops </td></tr>
+                <!--<tr><td valign="top" class="white">Wetlands</td></tr>-->
+                <tr><td valign="top" class="woodywetlands" align="left">Woody Wetlands</td></tr>
+                <tr><td valign="top" class="emergentwetlands" align="left">Emergent Herbaceous Wetlands</td></tr>
+            </table>
+        </div>
+
         <script>
             $("#selection a").click(function(){
                 var index = $(this).index();
