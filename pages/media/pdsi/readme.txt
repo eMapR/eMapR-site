@@ -34,3 +34,8 @@ StateCode,Division,YearMonth,    PCP,   TAVG,   PDSI,   PHDI,   ZNDX,   PMDI,   
 metadata: ftp://ftp.ncdc.noaa.gov/pub/data/cirs/climdiv/drought-readme.txt
 
 ftp: ftp://ftp.ncdc.noaa.gov/pub/data/cirs/climdiv/
+
+
+
+The shapefile was exported in QGIS as geojson and the precision was reduced. The geojson file was then imported into mapshaper and simplified by 99.25%
+CONUS_CLIMATE_DIVISIONS.shp.zip
