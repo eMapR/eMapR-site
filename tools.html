@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <title>OSU eMapR Lab | Tools</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="vendors/w3.css">
+        <link rel="stylesheet" href="resources/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="resources/js/tools_controller_get.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="vendors/jquery.matchHeight-min.js"></script>
+        <script src="resources/js/layout.js"></script>
+        <script src="resources/js/google_analytics.js"></script>
+    </head>
+    <body>
+		<!-- Navbar (sit on top) -->
+		<div class="w3-top">
+			<ul class="w3-navbar w3-card-2 w3-white" id="myNavbar">
+				<!--class="w3-navbar"-->
+				<li class="w3-hide-medium w3-hide-large w3-opennav w3-right">
+					<a class="w3-hover-black" href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
+					<i class="fa fa-bars"></i>
+					</a>
+				</li>
+                <!--<li class="w3-left-align tab-active"><a href="index.html"><i class="fa fa-home"></i> HOME</a></li>-->
+				<li class="w3-hide-small"><a class="navBarA" id="emaprLogoA" href="index.html"><img id="emaprLogoImg" src="resources/images/graphic_logo_text.svg"></a></li>
+				<li class="w3-hide-small"><a href="people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
+				<li class="w3-left-align tab-active"><a href="tools.html"><i class="fa fa-wrench"></i> TOOLS</a></li>
+				<li class="w3-hide-small"><a href="projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
+				<!--<li class="w3-hide-small"><a href="data.html"><i class="fa fa-database"></i> DATA</a></li>-->
+                <li class="w3-hide-small"><a href="media.html"><i class="fa fa-picture-o"></i> MEDIA</a></li>                
+                <li class="w3-hide-small"><a href="education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+				<li class="w3-hide-small"><a href="publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+				<li class="w3-hide-small"><a href="contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				<li class="w3-hide-small w3-right"><a id="osuLink" href="http://oregonstate.edu/" target="_blank" class="w3-xlarge">OSU</a></li>
+			</ul>
+			<!-- Navbar on small screens -->
+			<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
+				<ul class="w3-navbar w3-left-align w3-white">
+					<li><a href="index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
+					<li><a href="tools.html" onclick="toggleFunction()"><i class="fa fa-wrench"></i> TOOLS</a></li>
+					<li><a href="projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
+					<!--<li><a href="data.html" onclick="toggleFunction()"><i class="fa fa-database"></i> DATA</a></li>-->
+                    <li><a href="media.html" onclick="toggleFunction()"><i class="fa fa-picture-o"></i> MEDIA</a></li>                    
+                    <li><a href="education.html" onclick="toggleFunction()"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+					<li><a href="publication.html" onclick="toggleFunction()"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+					<li><a href="contact.html" onclick="toggleFunction()"><i class="fa fa-envelope"></i> CONTACT</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="w3-content w3-container w3-padding-64 w3-white">
+			<div ng-app="myApp">
+				<div ng-controller="projCtrl">
+					<div class="w3-row" ng-repeat="proj in projects" ng-if="$even">
+						<div class="w3-col m6 w3-container" ng-repeat="i in [$index, $index + 1]"  
+							ng-if="projects[i].name != null">
+							<!---->
+							<a ng-href='{{ projects[i].url }}' style="text-decoration:none;">
+                                <div class="w3-card-4 w3-section  w3-border" height=100%>
+                                    <div class="w3-display-container w3-hover-opacity">
+                                        <img ng-cloak ng-src= '{{ projects[i].img }}' width=100%>
+                                        <!--<div class="w3-white w3-opacity-min w3-padding w3-display-bottomleft" style="width:100%; height:45px">
+
+                                        </div>-->
+
+                                    </div>
+                                    <b><h3 class="w3-container" style="margin-bottom:0px;">{{ projects[i].name }}</h3></b> <!-- style="position:relative; top:-55px; margin-bottom:-50px"-->
+                                    <div class="w3-container box"> <!-- style='height:320px'-->
+                                        <p ng-bind-html="$sce.trustAsHtml(projects[i].descr)" style="margin-top:5px;"></p>
+                                        <!---<p style="margin-top:5px;">{{ projects[i].descr }}</p>-->
+                                    </div>
+                                    <!-- can bind data with {{ }} or ng-bind-->
+				                </div>
+                            </a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> 
+    </body>
+</html>
