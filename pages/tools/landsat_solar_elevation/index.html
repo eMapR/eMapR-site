@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>OSU eMapR Lab | Landsat Solar Elevation</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="shortcut icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <script src="resources/js/google_analytics.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+        <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+        <script src="resources/js/google_analytics.js"></script>
+        <style>
+            body {
+                font-family: 'Lato', "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+                color: #333333; 
+                font-size: 16px;
+            }
+            p {
+                margin-top: 18px;
+                margin-bottom: 8px;
+            }
+            #container {
+                max-width: 800px;
+                position: relative;
+                display: block;
+                margin: 0 auto;
+                padding: 0 0px;
+            }
+            #map { 
+                height: 400px; 
+                width: 800px;
+            }
+            #plot {
+                width: 800px;
+            }
+            .inLine {
+                display:inline-block;
+            }
+            #info {
+                float: right;
+                cursor: pointer;
+            }
+            .leftColor{
+                border-left: 4px solid rgb(98, 184, 234);
+                padding-left: 4px;
+                margin-left: 10px;
+            }
+            .inLine .leftColor{
+                width: 135px
+            }
+            #logo{
+                position: absolute;
+                height: 50px;
+                width: auto;
+                left: 15px;
+                top: 15px;
+                z-index:100
+            }
+        </style>
+    </head>
+	<body>
+        <a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="../../../resources/images/graphic_logo_text.svg"></a>
+        <div id="container">
+            <p class="inLine">Click a location to plot its annual solar elevation profile</p>
+            <!--<h5 id="info">Info</h5>-->
+            <div id="map"></div>
+            <p class="inLine">Hover on points</p>
+            <div class="inLine" style="float: right;">
+                <p id="lat" class="inLine leftColor" >Lat:</p>
+                <p id="lng" class="inLine leftColor" >Lng:</p>
+                <p id="tz" class="inLine leftColor" >Time Zone:</p>
+                <p id="tm" class="inLine leftColor" >Time:</p>
+            </div>
+            <canvas id="plot"></canvas>
+            <!--</div>-->
+        </div>
+        <script src="ls_sol_elev.js"></script>
+    </body>
+</html>
