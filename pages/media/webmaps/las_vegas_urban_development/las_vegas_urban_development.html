@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OSU eMapR Lab | Las Vegas Urban Development</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="shortcut icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.js"></script>
+
+        <style>
+            body { margin:0; padding:0; }
+            html,body { height:100%; }
+            #map {
+                width: 100%;
+                height:100%;
+            }
+            #logo{
+                position: fixed;
+                height: 50px;
+                width: auto;
+                right: 15px;
+                top: 15px;
+                z-index:1000;
+                background-color: rgba(255,255,255,0.70);
+                padding: 4px;
+                border-radius: 5px;
+			}
+        </style>
+
+    </head>
+	<body>
+		
+        <a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="../../../../resources/images/graphic_logo_text.svg"></a>
+        <div id="map"></div>
+        <script>
+
+            // define the basemap 
+            var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+               attribution: 'Tiles &copy; Esri'
+            });    
+
+            // define the map
+            var map = L.map('map', {
+                layers: [Esri_WorldImagery]
+            });
+
+            // define the video bounds
+            var bounds = L.latLngBounds([[36.348314860643015, -115.3626251220703], [35.9285367031886, -114.89913940429688]]);   
+
+            // define video    
+            var videoUrls = ["las_vegas_urban_development.mp4"]
+            
+            // overlay the video
+            var videoOverlay = L.videoOverlay(videoUrls, bounds, {
+                opacity: 0.5
+            }).addTo(map);    
+
+            map.fitBounds(bounds);  
+
+        </script>
+
+    </body>
+</html>
