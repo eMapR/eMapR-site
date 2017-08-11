@@ -1,29 +1,31 @@
 <!DOCTYPE html>
 <html>
-	<title>OSU eMapR Lab | Education</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta http-equiv="cache-control" content="no-cache">
-	<link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon">
-	<link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
-	<!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
-	<link rel="stylesheet" href="vendors/w3.css">
-	<link rel="stylesheet" href="resources/css/style.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-	<!--<script src="resources/js/people_controller_noget.js"></script>-->
-	<script src="resources/js/publications_controller_get.js"></script>
-	<script src="resources/js/layout.js"></script>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    <head>
+        <title>OSU eMapR Lab | Education</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="shortcut icon" href="resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="resources/images/favicon.ico" type="image/x-icon">
+        <!--<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+        <link rel="stylesheet" href="vendors/w3.css">
+        <link rel="stylesheet" href="resources/css/style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <!--<script src="resources/js/people_controller_noget.js"></script>-->
+        <script src="resources/js/publications_controller_get.js"></script>
+        <script src="resources/js/layout.js"></script>
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-      ga('create', 'UA-99603309-2', 'auto');
-      ga('send', 'pageview');
-    </script>
+          ga('create', 'UA-99603309-2', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </head>    
 	<body>
 		<!-- Navbar (sit on top) -->
 		<div class="w3-top">
@@ -34,23 +36,24 @@
 					<i class="fa fa-bars"></i>
 					</a>
 				</li>
-				<li class="w3-hide-small"><a href="index.html"><i class="fa fa-home"></i> HOME</a></li>
+                <!--<li class="w3-left-align tab-active"><a href="index.html"><i class="fa fa-home"></i> HOME</a></li>-->
+				<li class="w3-hide-small"><a class="navBarA" id="emaprLogoA" href="index.html"><img id="emaprLogoImg" src="resources/images/graphic_logo_text.svg"></a></li>
 				<li class="w3-hide-small"><a href="people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
-				<!--<li class="w3-hide-small"><a href="algorithms.html"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+				<li class="w3-hide-small"><a href="tools.html"><i class="fa fa-wrench"></i> TOOLS</a></li>
 				<li class="w3-hide-small"><a href="projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
                 <!--<li class="w3-hide-small"><a href="data.html"><i class="fa fa-database"></i> DATA</a></li>-->
                 <li class="w3-hide-small"><a href="media.html"><i class="fa fa-picture-o"></i> MEDIA</a></li>
                 <li class="w3-left-align tab-active"><a href="education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
 				<li class="w3-hide-small"><a href="publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
 				<li class="w3-hide-small"><a href="contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
-				<li class="w3-hide-small w3-right"><a href="http://oregonstate.edu/" target="_blank" class="w3-hover-grey w3-orange">OSU</a></li>
+				<li class="w3-hide-small w3-right"><a id="osuLink" href="http://oregonstate.edu/" target="_blank" class="w3-xlarge">OSU</a></li>
 			</ul>
 			<!-- Navbar on small screens -->
 			<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
 				<ul class="w3-navbar w3-left-align w3-white">
 					<li><a href="index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
 					<li><a href="people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
-					<!--<li><a href="algorithms.html" onclick="toggleFunction()"><i class="fa fa-line-chart"></i> ALGORITHMS</a></li>-->
+					<li><a href="tools.html" onclick="toggleFunction()"><i class="fa fa-wrench"></i> TOOLS</a></li>
 					<li><a href="projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
 					<!--<li><a href="data.html" onclick="toggleFunction()"><i class="fa fa-database"></i> DATA</a></li>-->
                     <li><a href="media.html" onclick="toggleFunction()"><i class="fa fa-picture-o"></i> MEDIA</a></li>
