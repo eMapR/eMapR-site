@@ -8,11 +8,11 @@
 		"name": "Landsat Solar Elevation",
 		"descr": "Interactive web application for determining the solar elevation at time and day of Landsat image acquisition.",
 		"img": "resources/images/tools/landsat_solar_elev.png",
-		"url": "/pages/tools/landsat_solar_elevation/index.html"
+		"url": "/pages/tools/landsat_solar_elevation/landsat_solar_elevation.html"
 	}, {
 		"name": "PDSI Time Series",
 		"descr": "Interactive web application for plotting monthly Palmer Drought Servity Index values from 1970-present for NOAA-designated climate divisions within the United States.",
 		"img": "resources/images/tools/pdsi_time_series.jpg",
-		"url": "/pages/tools/pdsi_time_series/index.html"
+		"url": "/pages/tools/pdsi_time_series/pdsi_time_series.html"
 	}
 ]
