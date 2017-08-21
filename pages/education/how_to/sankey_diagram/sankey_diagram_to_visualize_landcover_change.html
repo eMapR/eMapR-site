@@ -62,10 +62,10 @@
             <div class="w3-content w3-container w3-padding-64" style="background: rgba(255, 255, 255, 0.6);">
                 <h1>Make a D3 Sankey diagram in R</h1>
                 <p>
-                    Sankey diagrams are a specific type of flow diagram, in which the width of the arrows is shown proportionally to the flow quantity. In this tutorial we'll be using a Sankey diagram to visualize from-to land cover change in the area of Las Vegas, NV for three time slices: 1990, 2000, and 2010. Shown in the following figure is the resulting diagram so you have a sense for what we're producing and how it can help interpret land cover change. Each column of colored nodes represents a year and each node within columns represents a land cover type. The height of a node is prorportial to the area of that particular land cover type for a given year on the landscape. The grey lines of varying width linking nodes show the proportion of the landscape moving from one cover type to another type.    
+                    Sankey diagrams are a specific type of flow diagram, in which the thickness of the arrows is shown proportionally to the flow quantity. In this tutorial we'll be using a Sankey diagram to visualize from-to land cover change in the area of Las Vegas, NV for three time slices: 1990, 2000, and 2010. Shown in the following figure is the resulting diagram so you have a sense for what we're producing and how it can help interpret land cover change. Each column of colored nodes represents a year and each node within columns represents a land cover type. The height of a node is proportional to the area of that particular land cover type for a given year on the landscape. The grey lines of varying thickness linking nodes show the proportion of the landscape moving from one cover type to another type.    
                 </p>
                 <img class="w3-image" src="sankey_diagram_las_vegas_landcover_change.png">
-                <p>The data we used to produce this Sankey diagram is from three maps of <a href="https://www.mrlc.gov/" target="_blank">NLCD land cover</a> classes we've repdicted using Landsat imagery for years 1990, 2000, and 2010. The primary land cover classes present during these time slices include:</p>
+                <p>The data we used to produce this Sankey diagram is from three maps of <a href="https://www.mrlc.gov/" target="_blank">NLCD land cover</a> classes we've predicted using Landsat imagery for years 1990, 2000, and 2010. The primary land cover classes present in these time slices include:</p>
                 <ul>
                     <li>Developed, Open Space</li>
                     <li>Developed, Low Intensity</li>
@@ -89,12 +89,21 @@
                     </ul>
                 </ul>
                 <p>
-                    You can download R <a href="https://cran.r-project.org/mirrors.html">here</a>, select an archive network near you and follow install instructions on their site. RStudio can be downloaded <a href="https://www.rstudio.com/">here</a>, follow the sites download and install instructions. To get the libraries enter the following in the RStudio command prompt: <code>install.packages(c('raster', 'networkD3', 'dplyr'))</code>
+                    You can download R <a href="https://cran.r-project.org/mirrors.html">here</a>, select an archive network near you and follow install instructions on their site. RStudio can be downloaded <a href="https://www.rstudio.com/">here</a>, follow the sites download and install instructions. To download and install the R libraries, enter the following in the RStudio command prompt: <code>install.packages(c('raster', 'networkD3', 'dplyr'))</code>
                 </p>
+                <h3>Resources</h3>
+                <p>This <a href="emapr_sankey_diagram_land_cover_change_demo.zip">link</a> will prompt a download of a zip file that contains the following files that can be used to replicate the above Sankey diagram.</p>
+                <ul>
+                    <li>emapr_nlcd_prediction_1990.tif</li>
+                    <li>emapr_nlcd_prediction_2000.tif</li>
+                    <li>emapr_nlcd_prediction_2010.tif</li>
+                    <li>emapr_sankey_diagram_land_cover_change_demo.r</li>
+                </ul>
+                <p>The three .tif files are the map data and the .r file is the script.</p> 
                 <h3>Steps</h3>
                 <ol>
                     <h4><li>Define raster files to use (user input)</li></h4>
-                    <p>These files should represent some slice of data from a time series that can be summarized as a proportion of the spatial domain of the data. Any kind of classified map with integer values that code categories. In this example we use land cover maps from 1990, 2000, and 2010. Each file is organized as a separate row of a data.frame. We put them in order of there occurance in time. We also identify what node column each file should represent and what band the data is in.</p>
+                    <p>These files should represent some slice of data from a time series that can be summarized as a proportion of the spatial domain of the data. Any kind of classified map with integer values that code categories. In this example we use land cover maps from 1990, 2000, and 2010. Each file is organized as a separate row of a data.frame. We put them in order of their occurrence in time. We also identify what node column each file should represent and what band the data is in.</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">fileInfo <- data.frame(nodeCol=1, rasterFile="D:/mock/sankey_nlcd/nlcd_1990.tif", rasterBand=1) %>%
       rbind(data.frame(nodeCol=2, rasterFile="D:/mock/sankey_nlcd/nlcd_2000.tif", rasterBand=1)) %>%
       rbind(data.frame(nodeCol=3, rasterFile="D:/mock/sankey_nlcd/nlcd_2010.tif", rasterBand=1))</pre>
@@ -102,14 +111,14 @@
                     
                     
                     
-                    <h4><li>Provide infomation about each node in the diagram (user input)</li></h4>
-                    <p>Here we build a data.frame with one row per node in the diagram. There will be a node for each time slice (raster file/node column) and each map class of interest in a given time slice. In our Las Vegas land cover example, we have three time slices and 6 classes of interest per time slice, so we have a total of 18 (3 * 6) nodes in our diagram. For each node we append a row to our <code>nodeInfo</code> data.frame</p>. The data frame requires 5 arguments:
+                    <h4><li>Provide information about each node in the diagram (user input)</li></h4>
+                    <p>Here we build a data.frame with one row per node in the diagram. There will be a node for each time slice (raster file/node column) and each map class of interest in a given time slice. In our Las Vegas land cover example, we have three time slices and six classes of interest per time slice, so we have a total of 18 (3 * 6) nodes in our diagram. For each node we append a row to our <code>nodeInfo</code> data.frame</p>. The data frame requires 5 arguments:
                     <ul>
                         <li><code>nodeName</code> - a text string describing the time slice and the map class</li>
                         <li><code>nodeID</code> - a unique integer used by the networkD3 Sankey plotting function to link nodes and associated node names</li>
                         <li><code>mapClass</code> - an integer value for this particular class in the raster map</li>
                         <li><code>nodeCol</code> - an integer value describing what node column this class/time slice belongs to, starting with 1 on the left and incrementing by 1 for each successive column to the right</li>
-                        <li><code>nodeGroup</code> - a text string that is used to define node groups so they can be colored similarily, here we color the nodes by map class.</li>
+                        <li><code>nodeGroup</code> - a text string that is used to define node groups so they can be colored similarly, here we color the nodes by map class.</li>
                     </ul>
               
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">nodeInfo <- data.frame(nodeName="1990 Developed, Open Space"       , nodeID=0,  mapClass=21, nodeCol=1, nodeGroup='a') %>%
@@ -143,7 +152,7 @@
                     
                     
                     <h4><li>Define a few plot formatting arguments (user input)</li></h4>
-                    <p>Here the font size, font family, and nodeWidth are defined</p>            
+                    <p>Here the plot's font size, font family, and nodeWidth are defined</p>            
         
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">fontSize <- 12
 nodeWidth <- 30
@@ -180,7 +189,7 @@ for(i in 1:(length(NodeCols)-1)){
 }</pre>
 
                     <h4><li>Generating the Sankey plot</li></h4>
-                    <p>Here we call the <code>sankeyNetwork</code> function from the <i>networkD3</i> library using fields from the <code>linkInfo</code> and <code>nodeInfo</code> data.frames to generate the plot. It will be printed to the RStudio viewer. Adjust the view window size height and width, and rerun this final code snippet to optimize the plot size for your purpose.</p>
+                    <p>Here we call the <code>sankeyNetwork</code> function from the networkD3 library using fields from the <code>linkInfo</code> and <code>nodeInfo</code> data.frames to generate the plot. It will be printed to the RStudio viewer. Adjust the view window size height and width, and rerun this final code snippet to optimize the plot size for your purpose.</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">sankeyNetwork(Links = linkInfo, Nodes = nodeInfo,
               Source = "source",
               Target = "target",
@@ -193,7 +202,7 @@ for(i in 1:(length(NodeCols)-1)){
               colourScale = paste0('d3.scaleOrdinal().range([',groupColor,'])'))</pre>
                     
                     <h4><li>Save the plot</li></h4>
-                    <p>You can alter the to plot the diagram directly to an image file, but I prefer to export the viewer image using the <i>Export</i> button in the RStudio viewer. Doing this allows you to manually adjust the order of the nodes in the columns so that they are in the same order. To do this, simply click/hold/drag the nodes into position. Once they are set, you can save the representation to file. Note that networkD3 was built using the <a href="http://www.htmlwidgets.org/" target="_blank">htmlwidgets</a> framework so can be integrated into R <a href="http://rmarkdown.rstudio.com/" target="_blank">Markdown</a> and <a href="http://shiny.rstudio.com/" target="_blank">Shiny</a> applications.</p>                    
+                    <p>You can alter the to plot the diagram directly to an image file, but I prefer to export the viewer image using the <i>Export</i> button in the RStudio viewer. Doing this allows you to manually adjust the order of the nodes in the columns so that they are in the same order. To do this, simply click > hold > drag the nodes into position. Once they are set, you can save the representation to file. Note that networkD3 was built using the <a href="http://www.htmlwidgets.org/" target="_blank">htmlwidgets</a> framework, so the resulting diagram can be integrated into R <a href="http://rmarkdown.rstudio.com/" target="_blank">Markdown</a> and <a href="http://shiny.rstudio.com/" target="_blank">Shiny</a> applications.</p>                    
 
                 </ol>
             </div>
