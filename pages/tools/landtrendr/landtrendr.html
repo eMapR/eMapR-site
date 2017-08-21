@@ -8,118 +8,122 @@
         <link rel="shortcut icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
         <link rel="icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-<style>
-    /*
- * This file is NOT needed in order to use skrollr.
- * The demo uses it and it may help you as well.
- */
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <style>
+                /*
+             * This file is NOT needed in order to use skrollr.
+             * The demo uses it and it may help you as well.
+             */
+            html, body {
+                width:100%;
+                height:100%;
+                padding:0;
+                margin:0;
+                overflow-x:hidden;
+            }
+
+            .skrollable {
+                /*
+                 * First-level skrollables are positioned relative to window
+                 */
+                position:fixed;
+
+                /*
+                 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
+                 */
+                z-index:100;
+            }
+
+            .skrollr-mobile .skrollable {
+                /*
+                    May cause issues on Android default browser (see #331 on GitHub).
+                */
+                position:absolute;
+            }
+
+            .skrollable .skrollable {
+                /*
+                 * Second-level skrollables are positioned relative their parent skrollable
+                 */
+                position:absolute;
+            }
+
+            .skrollable .skrollable .skrollable {
+                /*
+                 * Third-level (and below) skrollables are positioned static
+                 */
+                position:static;
+            }
 
 
-html, body {
-	width:100%;
-	height:100%;
-	padding:0;
-	margin:0;
-	overflow-x:hidden;
-}
+            #transform {
+                width:70%;
+                left:50%;
+                top:20%;
+                margin-left:-35%;
+                text-align:center;
+                font-size:150%;
+            }
 
-.skrollable {
-	/*
-	 * First-level skrollables are positioned relative to window
-	 */
-	position:fixed;
+            #easing {
+                top:10%;
+                left:20%;
+                width:50%;
+                z-index:101;
+            }
 
-	/*
-	 * Skrollables by default have a z-index of 100 in order to make it easy to position elements in front/back without changing each skrollable
-	 */
-	z-index:100;
-}
+            .wrapper{
+                width: 100%;
+                height: 100%;
+            }
 
-.skrollr-mobile .skrollable {
-	/*
-		May cause issues on Android default browser (see #331 on GitHub).
-	*/
-	position:absolute;
-}
+            /*    
+                .center-junk{
+                    left:50%; 
+                    width: 70%; 
+                    margin-left:-35%; 
+                    text-align: center
+                }
 
-.skrollable .skrollable {
-	/*
-	 * Second-level skrollables are positioned relative their parent skrollable
-	 */
-	position:absolute;
-}
+                .center-m-junk{
+                    left:50%; 
+                    width: 50%; 
+                    margin-left:-25%; 
+                    text-align: center
+                }
 
-.skrollable .skrollable .skrollable {
-	/*
-	 * Third-level (and below) skrollables are positioned static
-	 */
-	position:static;
-}
-    
-    
-    #transform {
-	width:70%;
-	left:50%;
-	top:20%;
-	margin-left:-35%;
-	text-align:center;
-	font-size:150%;
+                .con-med-junl{
+                    left:50%; 
+                    width: 50%; 
+                    margin-left:-25%; 
+                }
 
-}
-    
-    #easing {
-	top:10%;
-    left:20%;
-	width:50%;
-	z-index:101;
-    }
-    .wrapper{
-        width: 100%;
-        height: 100%;
-    }
-    
-/*    
-    .center-junk{
-        left:50%; 
-        width: 70%; 
-        margin-left:-35%; 
-        text-align: center
-    }
-    
-    .center-m-junk{
-        left:50%; 
-        width: 50%; 
-        margin-left:-25%; 
-        text-align: center
-    }
-    
-    .con-med-junl{
-        left:50%; 
-        width: 50%; 
-        margin-left:-25%; 
-    }
-        
-    .center-text{
-        
-    }
-*/
-    
-    .center-h{
-        position: absolute !important; 
-        left: 50%;
-        transform: translate(-50%);
-    }
-    .center{
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-    }
-    
+                .center-text{
 
+                }
+            */
 
+            .center-h{
+                position: absolute !important; 
+                left: 50%;
+                transform: translate(-50%);
+            }
+            .center{
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+            }
       </style>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-99603309-2', 'auto');
+        ga('send', 'pageview');
+    </script>
   </head>
   <body>
 
