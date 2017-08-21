@@ -30,37 +30,35 @@
 					</a>
 				</li>              
                 <!--<li class="w3-left-align tab-active"><a href="index.html"><i class="fa fa-home"></i> HOME</a></li>-->
-				<li class="w3-hide-small"><a class="navBarA" id="emaprLogoA" href="index.html"><img id="emaprLogoImg" src="../../resources/images/graphic_logo_text.svg"></a></li>
-				<li class="w3-hide-small"><a class="navBarA" href="people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
-				<li class="w3-hide-small"><a class="navBarA" href="tools.html"><i class="fa fa-wrench"></i> TOOLS</a></li>
-				<li class="w3-hide-small"><a class="navBarA" href="projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
+				<li class="w3-hide-small"><a class="navBarA" id="emaprLogoA" href="../../../../index.html"><img id="emaprLogoImg" src="../../../../resources/images/graphic_logo_text.svg"></a></li>
+				<li class="w3-hide-small"><a class="navBarA" href="../../../../people.html"><i class="fa fa-user"></i> PEOPLE</a></li>
+				<li class="w3-hide-small"><a class="navBarA" href="../../../../tools.html"><i class="fa fa-wrench"></i> TOOLS</a></li>
+				<li class="w3-hide-small"><a class="navBarA" href="../../../../projects.html"><i class="fa fa-th"></i> PROJECTS</a></li>
 				<!--<li class="w3-hide-small"><a href="data.html"><i class="fa fa-database"></i> DATA</a></li>-->
-                <li class="w3-hide-small"><a class="navBarA" href="media.html"><i class="fa fa-picture-o"></i> MEDIA</a></li>                                                
-                <li class="w3-left-align tab-active"><a class="navBarA" href="education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
-				<li class="w3-hide-small"><a class="navBarA" href="publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
-				<li class="w3-hide-small"><a class="navBarA" href="contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
+                <li class="w3-hide-small"><a class="navBarA" href="../../../../media.html"><i class="fa fa-picture-o"></i> MEDIA</a></li>                                                
+                <li class="w3-left-align tab-active"><a class="navBarA" href="../../../../education.html"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+				<li class="w3-hide-small"><a class="navBarA" href="../../../../publications.html"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+				<li class="w3-hide-small"><a class="navBarA" href="../../../../contact.html"><i class="fa fa-envelope"></i> CONTACT</a></li>
 				<li class="w3-hide-small w3-right"><a id="osuLink" href="http://oregonstate.edu/" target="_blank" class="w3-xlarge">OSU</a></li>
-                
-                
 			</ul>
 			<!-- Navbar on small screens -->
 			<div id="navDemo" class="w3-hide w3-hide-large w3-hide-medium">
 				<ul class="w3-navbar w3-left-align w3-white">
-					<li><a href="index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
-					<li><a href="people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
-					<li><a href="tools.html" onclick="toggleFunction()"><i class="fa fa-wrench"></i> TOOLS</a></li>
-					<li><a href="projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
+					<li><a href="../../../../index.html" onclick="toggleFunction()"><i class="fa fa-home"></i> HOME</a></li>
+					<li><a href="../../../../people.html" onclick="toggleFunction()"><i class="fa fa-user"></i> PEOPLE</a></li>
+					<li><a href="../../../../tools.html" onclick="toggleFunction()"><i class="fa fa-wrench"></i> TOOLS</a></li>
+					<li><a href="../../../../projects.html" onclick="toggleFunction()"><i class="fa fa-th"></i> PROJECTS</a></li>
 					<!--<li><a href="data.html" onclick="toggleFunction()"><i class="fa fa-database"></i> DATA</a></li>-->
-                    <li><a href="media.html" onclick="toggleFunction()"><i class="fa fa-picture-o"></i> MEDIA</a></li>
-                    <li><a href="education.html" onclick="toggleFunction()"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
-					<li><a href="publication.html" onclick="toggleFunction()"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
-					<li><a href="contact.html" onclick="toggleFunction()"><i class="fa fa-envelope"></i> CONTACT</a></li>
+                    <li><a href="../../../../media.html" onclick="toggleFunction()"><i class="fa fa-picture-o"></i> MEDIA</a></li>
+                    <li><a href="../../../../education.html" onclick="toggleFunction()"><i class="fa fa-graduation-cap"></i> EDUCATION</a></li>
+					<li><a href="../../../../publication.html" onclick="toggleFunction()"><i class="fa fa-file-text"></i> PUBLICATIONS</a></li>
+					<li><a href="../../../../contact.html" onclick="toggleFunction()"><i class="fa fa-envelope"></i> CONTACT</a></li>
 				</ul>
 			</div>
 		</div>
         <div class="w3-display-container">
             <div class="w3-content w3-container w3-padding-64" style="background: rgba(255, 255, 255, 0.6);">
-                <h1>Make a D3 Sankey diagram in R</h1>
+                <h1>How to Make a D3 Sankey diagram in R</h1>
                 <p>
                     Sankey diagrams are a specific type of flow diagram, in which the thickness of the arrows is shown proportionally to the flow quantity. In this tutorial we'll be using a Sankey diagram to visualize from-to land cover change in the area of Las Vegas, NV for three time slices: 1990, 2000, and 2010. Shown in the following figure is the resulting diagram so you have a sense for what we're producing and how it can help interpret land cover change. Each column of colored nodes represents a year and each node within columns represents a land cover type. The height of a node is proportional to the area of that particular land cover type for a given year on the landscape. The grey lines of varying thickness linking nodes show the proportion of the landscape moving from one cover type to another type.    
                 </p>
@@ -203,7 +201,6 @@ for(i in 1:(length(NodeCols)-1)){
                     
                     <h4><li>Save the plot</li></h4>
                     <p>You can alter the to plot the diagram directly to an image file, but I prefer to export the viewer image using the <i>Export</i> button in the RStudio viewer. Doing this allows you to manually adjust the order of the nodes in the columns so that they are in the same order. To do this, simply click > hold > drag the nodes into position. Once they are set, you can save the representation to file. Note that networkD3 was built using the <a href="http://www.htmlwidgets.org/" target="_blank">htmlwidgets</a> framework, so the resulting diagram can be integrated into R <a href="http://rmarkdown.rstudio.com/" target="_blank">Markdown</a> and <a href="http://shiny.rstudio.com/" target="_blank">Shiny</a> applications.</p>                    
-
                 </ol>
             </div>
         </div>
