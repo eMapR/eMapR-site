@@ -63,7 +63,7 @@
             <div class="w3-content w3-container w3-padding-64" style="background: rgba(255, 255, 255, 0.6);">
                 <h1>Spatial segmentation of image data</h1>
                 <p>
-                    This demonstration will walk through the steps to segment image data derived from Landsat satellite imagery using python's <a href="http://scikit-image.org/">scikit-image</a> library. The example data is predicted biomass for a research forest in western Oregon. The goal is to create a zone map of areas of similar biomass levels for calculating summary statistics on. The files used in this walk through can be downloaded from the resources section</p>
+                    This demonstration will walk through the steps to segment image data derived from Landsat satellite imagery using python's <a href="http://scikit-image.org/">scikit-image</a> library. The example data is predicted biomass for a research forest in western Oregon. The goal is to create a zone map of areas of similar biomass levels for calculating summary statistics on.</p> <!-- The files used in this walk through can be downloaded from the resources section-->
                 <h3>Dependecies</h3>
                 <ul>
                     <li>GDAL</li>
@@ -71,10 +71,10 @@
                     <li>skimage</li>
                     <li>matplotlib</li>
                 </ul>
-                
+                <!--
                 <h3>Resources</h3>
                 <p>The following is a zip file that contains a .tif file of predicted biomass for a research forest in western Oregon and a python script that will segment it.</p>
-                
+                -->
                 <h3>Steps</h3>
                 <ol>
                     <h4><li>Load libraries</li></h4>
@@ -83,7 +83,9 @@ import numpy as np
 from skimage import segmentation, color, io
 from skimage.future import graph
 from skimage.segmentation import mark_boundaries
-from matplotlib import pyplot as plt</pre>   
+from matplotlib import pyplot as plt
+from osgeo import gdal
+import os</pre>   
                 
                     <h4><li>Define Functions</li></h4>
                     <p>Callback to handle merging nodes by recomputing mean color</p>
@@ -102,7 +104,7 @@ def merge_mean_color(graph, src, dst):
                                    graph.node[dst]['pixel count'])</pre>
                 
                     <p>Function to stretch and compress image to 8-bit range 0-255 for viewing</p>
-                 <!--   <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">
 def make_display_image(img, bgPixels):
   img[bgPixels] = np.nan
   imgMean = np.nanmean(img)
@@ -117,19 +119,22 @@ def make_display_image(img, bgPixels):
   imgMax = imgMean+(imgStd*2)
   img[img < imgMin] = imgMin
   img[img > imgMax] = imgMax
-  img = np.round( ( (img-imgMin) / (imgMax-imgMin+0.0) ) *255).astype(np.uint8)
-  return img</pre> -->
+  img = np.round(((img-imgMin) / (imgMax-imgMin+0.0)) * 255).astype(np.uint8)
+  return img</pre>
                 
-                    <h4><li>Define input image file and the NODATA value</li></h4>
+                    <h4><li>Define input raster file, output raster file, and the input NODATA value</li></h4>
                     <p>Define the image file path on your system.</p>
-                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">fn = '/vol/v1/proj/cmonster/lidar/lt_lidar_comparison/aggregated/rasters/hja_lidar_biomass_reproject_nearest_masked_1x1.bsq'</pre>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">inFile = 'C:/mock/emapr_hja_biomass.tif'</pre>
+                    
+                    <p>Define the desired file path on your system for the output raster.</p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">outFile = 'C:/mock/emapr_hja_biomass_segmented.tif'</pre>
                 
                     <p>Define what the background value of the image data is. In our case -9999 means NODATA or NA.</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">bgValue = -9999</pre>
 
                     
                     <h4><li>Read in the image, identify NODATA pixels, and create an 8-bit display version</li></h4>
-                    <p>Activate the GDAL plugin for <i>skimage</i> library so that it can read GeTIFFs</p>
+                    <p>Activate the GDAL plugin for <i>skimage</i> library so that it can read GeoTIFFs</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">io.use_plugin('gdal')</pre>
                 
                     <p>Read in the image</p>
@@ -141,12 +146,12 @@ def make_display_image(img, bgPixels):
                     <p>Create the display image and plot it</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">displayImg = make_display_image(img, bgPixels)
 plt.imshow(displayImg, cmap='gray')</pre>
-                    <p>Here is the image displaying forest biomass where white is high and balck is low.</p>
+                    <p>Here is the image displaying forest biomass where white is high and black is low.</p>
                     <img class="w3-image" src="hja_biomass.jpg">
                     
                     
                     <h4><li>Prepare the image for segmentation</li></h4>
-                    <p>This step compresses the image value range and moves the background pixel value closer to the minimum value of the data, but far enough away to define a distinct boundary between image data and background. We do this to improve the results of the initial spatial clustering of the image - we're trying to sqeeze the data a little closer together so that there is greater aggregation of neighboring pixels. If you have long tails in your data or extreme outliers you may decide to log or power transform your data to achieve the desired initial clustering. This is a subjective processes and will likely need to be iterated until satisfying results are obtained. In the first line we reset the background value, which is originally -9999 (as defined above) to -100, and in the second line we scale the image data values from 0 to 600. Again, these values are abitrary based on our assessment of the k-mean clustering of the image that occurs in the next step.
+                    <p>This step compresses the image value range and moves the background pixel value closer to the minimum value of the data, but far enough away to define a distinct boundary between image data and background. We do this to improve the results of the initial spatial clustering of the image - we're trying to squeeze the data a little closer together so that there is greater aggregation of neighboring pixels. If you have long tails in your data or extreme outliers you may decide to log or power transform your data to achieve the desired initial clustering. This is a subjective process and will likely need to be iterated until satisfying results are obtained. In the first line we reset the background value, which is originally -9999 (as defined above) to -100, and in the second line we scale the image data values from 0 to 600. Again, these values are arbitrary based on our assessment of the k-mean clustering of the image that occurs in the next step.
                     </p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">img[bgPixels] = -100
 img = np.round(((img-np.min(img)) / (np.max(img)-np.min(img)+0.0)) * 600)</pre>
@@ -156,14 +161,14 @@ img = np.round(((img-np.min(img)) / (np.max(img)-np.min(img)+0.0)) * 600)</pre>
                     </p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">imgSeg = segmentation.slic(img, compactness=110, n_segments=4000)</pre>
 
-                    <p>Plot the the orginal data and the clustered data. You want the clusters to be slightly smaller than patches you can indentify with your eyes in the original data because in a following step similar clusters will be merged. Change the parameter arguments above and rerun these lines as needed until you're reasonally satisfied with the clustering result.</p>
+                    <p>Plot the original data and the clustered data. You want the clusters to be slightly smaller than patches you can identify with your eyes in the original data because in a following step similar clusters will be merged. Change the parameter arguments above and rerun these lines as needed until you're reasonably satisfied with the clustering result.</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">kMeansLabelsAve = color.label2rgb(imgKmeans, img, kind='avg')
 fig, (ax0, ax1) = plt.subplots(1, 2 ,figsize=(20,10), dpi=72)
 ax0.imshow(img, cmap='gray')
 ax1.imshow(kMeansLabelsAve)
 ax0.axis('off')
 ax1.axis('off')</pre>
-                    <p>Here is the result of the inital k-means clustering. The average biomass value is calculated per node and displayed on a scale from blue to red, where blue is low and red is high.</p>
+                    <p>Here is the result of the initial k-means clustering. The average biomass value is calculated per node and displayed on a scale from blue to red, where blue is low and red is high.</p>
                     <img class="w3-image" src="hja_biomass_cluster.jpg">
                     
                     <h4><li>Create a region adjacency graph (RAG)</li></h4>
@@ -173,7 +178,7 @@ ax1.axis('off')</pre>
 
 
                     <h4><li>Merge similar cluster nodes together</li></h4>
-                    <p>In this final segmentation step we merge similar nodes together using a threshold of difference between nodes. Here, again, you'll need to play around with the threshold value (<code>thresh</code>) and assess the result until you are reasonally satisfied. The second command is executed to force all background pixels to the same segment label.
+                    <p>In this final segmentation step we merge similar nodes together using a threshold of difference between nodes. Here, again, you'll need to play around with the threshold value (<code>thresh</code>) and assess the result until you are reasonably satisfied. The second command is executed to force all background pixels to the same segment label.
                     </p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">imgLabels = graph.merge_hierarchical(imgKmeans, rag, thresh=150, rag_copy=False,
                                      in_place_merge=True,
@@ -183,35 +188,44 @@ ax1.axis('off')</pre>
 imgLabels[bgPixels] = imgLabels[0,0]</pre>
                     
                     <h4><li>View the segmentation</li></h4>
-                    <p>Use these line to view and evalute the final segmentation. Change the threshold in the previous step if nessisary and/or go back to the image scaling and initial segemntation by k-means steps to alter arguments to tweek the result. 
+                    <p>Use these line to view and evalute the final segmentation. Change the threshold in the previous step if necessary and/or go back to the image scaling and initial segmentation by k-means steps to alter arguments to tweak the result. 
                     </p>
-                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">imgLabels = graph.merge_hierarchical(imgKmeans, rag, thresh=150, rag_copy=False,
-                                     in_place_merge=True,
-                                     merge_func=merge_mean_color,
-                                     weight_func=weight_mean_color)
-
-imgLabels[bgPixels] = imgLabels[0,0]</pre>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">plt.figure(1,figsize=(10,10),dpi=72)
+plt.imshow(mark_boundaries(displyImg, imgLabels))</pre>
+                    
                     <p>Here is the resulting segmentation as segment boundaries overlain on the biomass display image - not too bad!</p>
                     <img class="w3-image" src="hja_biomass_segmented.jpg">
                     
                     
                     
+                    <h4><li>Write the segmentation labels to a raster file</li></h4>
+                    <p>In this final step the labeled segmentation of the orginal raster will be written to file as a GeoTIFF using the GDAL API.
+                    </p>
+                    <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">src = gdal.Open(inFile)
+driver = gdal.GetDriverByName('GTiff')
+labelMax = np.max(imgLabels)
+
+if labelMax <= 255:
+  dataType = 1
+elif labelMax <= 65535:
+  dataType = 2
+elif labelMax <= 4294967295:
+  dataType = 4
+
+outFile = os.path.splitext(outFile)[0]+'.tif'
+outImg = driver.Create(outFile, src.RasterXSize, src.RasterYSize, 1, dataType)
+outImg.SetGeoTransform(src.GetGeoTransform())
+outImg.SetProjection(src.GetProjection())
+outBand = outImg.GetRasterBand(1) 
+outBand.WriteArray(imgLabels)
+outImg = None</pre>
                     
+                    <p>Here is the labeled patch map which can be used to calculate zonal statistics for patches - colors were randomly assigned to patches.</p>
+                    <img class="w3-image" src="hja_biomass_patches.jpg">
                     
+
                 </ol>
-
-
-                    
-                    
-                    
-                    
-                    
-
-
-
-
             </div>
         </div>
-
 	</body>
 </html>
