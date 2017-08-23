@@ -67,17 +67,22 @@
                 <h2>Dependecies</h2>
                 <ul>
                     <li>GDAL</li>
-                    <p>*Note that installing all of these peices separatly can be troublesome. The most straight forward way to make sure that you have everything you need is to install <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. The install comes with the OSGeo4W Shell, which allows you to run all GDAL/ORG utilites, including the Python-based ones. On top of that you get a great open-source GIS!
+                    <p>*Note that installing all of these pieces separately can be troublesome. The most straight forward way to make sure that you have everything you need is to install <a href="http://www.qgis.org/en/site/" target="_blank">QGIS</a>. The install comes with the OSGeo4W Shell, which allows you to run all GDAL/ORG utilities, including the Python-based ones. On top of that you get a great open-source GIS!
                 </ul>
                     
                 <h2>Examples</h2>
                 <h3>Convert from ESRI shapefile to GeoJSON while reprojecting</h3>
-                <p>In this example we convert from a </p>
-                <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your image lives</p>
+                <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the directory where your image lives</p>
                 <div style="overflow-x:auto; white-space:nowrap" class="w3-code w3-light-grey notranslate">cd /mock/demo/</div>
-                <p>Run <code>ogr2ogr</code> replacing the file mock file names between the square brackets with your out and in file names (don't include the brackets)</p>
+                <p>Run <code>ogr2ogr</code> replacing the mock file names between the square brackets with your out and in file names (don't include the brackets)</p>
                 <div style="overflow-x:auto; white-space:nowrap" class="w3-code w3-light-grey notranslate">ogr2ogr -f GeoJSON -t_srs EPSG:5070 [outFile.geojson] [inFile.shp]
                 </div>
+                
+                
+                <h3>Dissolve all features in a GeoJSON vector file</h3>
+                <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the directory where your GeoJSON file lives and enter the following command, replacing the mock file names between the square brackets with your out and in file names (don't include the brackets)</p>
+                <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">ogr2ogr -f GeoJSON [outFile.geojson] [inFile.geojson] -dialect sqlite -sql "SELECT ST_Union(geometry) as geometry FROM OGRGeoJSON"</pre>
+                <p>In this command we use the -f (file format) argument to define GeoJSON as the out file format and the -dialect argument to define sqlite as the SQL dialect to use in our query. Note that "OGRGeoJSON" is the default layer name of a GeoJSON file. Get more info on this <a href="http://www.gdal.org/drv_geojson.html" target="_blank">here</a></p>
 
 
                     
