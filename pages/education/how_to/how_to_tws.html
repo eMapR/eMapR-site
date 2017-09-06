@@ -83,7 +83,7 @@
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">cd /mock/demo/</pre>
                     <p>Run <code>gdalwarp</code> on your image</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">gdalwarp -t_srs EPSG:3857 -r bilinear LE07_017039_20170508.tif LE07_017039_20170508_epsg3857.tif</pre>
-
+                    
                     <h4><li>Subset the image for 1 band grey or 3-band RGB display</li></h4>
                     <p>We want to show a false color RGB representation of the image. We will use bands 5, 4, and 3 in order of RGB. We'll use gdal_translate to subset those bands in that order using the <em>-b</em> switch to achieve this.</p>
                     <p>In a command prompt, terminal, or OSGeo4W Shell, CD to the direcory where your EPSG:3857 Web mercator image lives</p>
@@ -97,6 +97,7 @@
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">cd /mock/demo/</pre>
                     <p>Run <code>gdal2tiles</code> on your EPSG:3857 Web mercator subset image</p>
                     <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">gdal2tiles -z 0-13 LE07_017039_20170508_epsg3857_rgb543.tif tiles</pre>
+                    <p>*Depending on your system, you may need to call the function using the .py extention as in <code>gdal2tiles.py</code></p>
                 </ol>
             </div>
         </div>
