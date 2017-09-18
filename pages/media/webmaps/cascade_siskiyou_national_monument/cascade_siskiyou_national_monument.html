@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>OSU eMapR Lab | Cascade Siskiyou Bational Monument</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        <link rel="shortcut icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+
+        <!-- Leaflet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.js"></script>
+        <script src="../../../../vendors/leaflet-sidebar/leaflet-sidebar.js"></script>
+        <link rel="stylesheet" href="../../../../vendors/leaflet-sidebar/leaflet-sidebar.css">
+        
+        <!--polygon bounds data-->
+        <script src="cascade_siskiyou_national_monument_epsg4326.js"></script>
+        
+        <style>
+            body { margin:0; padding:0; }
+            body, table, tr, td, th, div, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
+            html,body { height:100%; }
+            #map {
+                width: 100%;
+                height:100%;
+            }
+            #logo{
+                /*position: fixed;*/
+                height: 50px;
+                width: auto;
+                /*right: 15px;
+                bottom: 30px;
+                z-index:1000;*/
+                /*background-color: rgba(255,255,255,0.70);*/
+                /*padding: 4px;*/
+                /*border-radius: 3px;*/
+			}
+            .ctl {
+                padding: 2px 10px 2px 10px;
+                background: rgba(255,255,255,0.9);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                text-align: right;
+                background-color:white; 
+                z-index:1000; 
+                position: absolute; 
+                right:12px; top:130px;
+                border-radius: 3px;
+
+            }
+        </style>
+
+    </head>
+	<body>
+		
+        
+        <div id="sidebar">
+            <a href="http://emapr.ceoas.oregonstate.edu/" target="_blank"><img id="logo" src="../../../../resources/images/graphic_logo_text.svg"></a>
+            <h1>Cascade–Siskiyou National Monument</h1>
+            <h5>From <a href="https://en.wikipedia.org/wiki/Cascade–Siskiyou_National_Monument" target="_blank">Wikipedia</a></h5>
+            <p>The Cascade–Siskiyou National Monument is a national monument that protects 86,774 acres (35,116 ha) of forest and grasslands at the junction of the Cascade Range and the Siskiyou Mountains in southwestern Oregon and northwestern California, United States. The monument is managed by the Bureau of Land Management as part of the National Landscape Conservation System and was established in a presidential proclamation by President Bill Clinton on June 9, 2000.</p>
+
+            <p>On January 12, 2017, President Barack Obama expanded the monument by 48,000 acres (19,000 ha). The expansion contains 5,000 acres (2,000 ha) in Northern California, in addition to 43,000 acres (17,000 ha) in Oregon.</p>
+            
+            <h5>From the eMapR Lab</h5>
+            <p>
+            What you are seeing here is a time lapse video of annual image data recorded by the Landsat Earth observing satellite sensors from 1984 to 2016. The imagery is displayed as a false color composite to enhance the contrast between land cover types. Dark blue is mature conifer forest, light blue is young conifer forest possibly with some mix of deciduous vegetation, yellow is deciduous vegetation, orange/red is soil mixed with non-photosynthetic plant material, red/pink is barren rock/soil/sand, and pure blue is water. 
+            </p>
+            <p>In the video we see that much change has happened in this region in 33 years. You’ll notice that more than half of the forested area experiences some change during this period. Active forest harvesting and fire removes vegetation throughout the series, but forests also return. Also note the effect that the monument designation of the area within the white boundary line has on protecting this area from the intense forest harvest occurring outside its bounds. 
+            </p>
+        </div>
+
+            
+        <div class="ctl">	       
+            <p style="float:left; margin:0px">Opacity</p>
+            <div><input id="newOpac" type="range" min="0" max="1" step="0.01" value="1" onchange="updateOpacity(this.value)" style="width:63px"></div>
+        </div>
+        
+        
+        <div id="map"></div>
+        <script>
+
+
+            
+            function updateOpacity(value) {
+                videoOverlay.setOpacity(value)
+            }
+            
+            
+            // define the basemaps 
+            var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+               attribution: 'Tiles &copy; Esri'
+            });
+            var OpenTopoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                maxZoom: 17,
+                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+            });
+            var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            });
+
+
+            
+            // define the video bounds
+            var bounds = L.latLngBounds([[42.28035698458569, -122.79693603515624], [41.920672548686824, -122.11990356445312]]);  //uly, ulx, lry, lrx 
+
+            // define video path   
+            var videoUrls = ["cascade_siskiyou_national_monument.mp4"]
+            
+            // define video overlay
+            var videoOverlay = L.videoOverlay(videoUrls, bounds, {
+                opacity: 1
+            })
+            
+            // define the boundary overlay
+            var boundsOverlay = L.geoJSON(csnm, {
+                    style: {
+                        weight: 2,
+                        opacity: 1,
+                        color: 'white',
+                        fillOpacity: 0
+                    }
+            });
+            
+            
+            
+            
+            // define the map
+            var map = L.map('map', {
+                layers: [videoOverlay, Esri_WorldImagery],
+                zoomControl:false
+            });
+
+            // define the sidebar
+            var sidebar = L.control.sidebar('sidebar', {
+                closeButton: true,
+                position: 'left'
+            });
+            map.addControl(sidebar);
+            
+            
+            
+            // create the layer control groups
+            var baseLayers = {"Satellite": Esri_WorldImagery, "TOPO": OpenTopoMap, "OSM": OpenStreetMap_Mapnik}
+            var overlays = {"RGB Vid": videoOverlay}
+
+            // add layer control to the map
+            L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+            
+            
+
+            
+            videoOverlay.addTo(map);
+            boundsOverlay.addTo(map);
+
+            map.fitBounds(bounds);  
+            sidebar.show()
+            //L.control.layers(basemaps, overlays).addTo(map);
+            
+        </script>
+
+    </body>
+</html>
