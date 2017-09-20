@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<!-- source: https://github.com/HeikkiVesanto/Leaflet.Photo/blob/gh-pages/local_file_example/index.html -->
+<html>
+    <head>
+        <title>OSU eMapR Lab | MORA Field Trip 2017</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="cache-control" content="no-cache">
+        
+        <!--favicon-->
+        <link rel="shortcut icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../../../../resources/images/favicon.ico" type="image/x-icon">
+        
+        <!--<link rel="stylesheet" href="css/leaflet.css" />-->
+        <link rel="stylesheet" href="css/Leaflet.Photo.css" />
+        <link rel="stylesheet" href="css/MarkerCluster.css" />
+		<link rel="stylesheet" href="css/map.css" />
+		<link rel="stylesheet" href="../../../../vendors/leaflet-sidebar/leaflet-sidebar.css">
+        
+                <!-- Leaflet -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.1.0/leaflet.js"></script>
+        <script src="../../../../vendors/leaflet-sidebar/leaflet-sidebar.js"></script>
+        <link rel="stylesheet" href="../../../../vendors/leaflet-sidebar/leaflet-sidebar.css">
+        
+        
+        <!--<script src="js/leaflet.js"></script>-->
+        <script src="js/leaflet.markercluster.js"></script>
+        <script src="js/Leaflet.Photo.js"></script>
+        <script src="../../../../vendors/leaflet-sidebar/leaflet-sidebar.js"></script>
+        
+        <style>
+            #logo{
+                /*position: fixed;*/
+                height: 50px;
+                width: auto;
+                /*right: 15px;
+                bottom: 30px;
+                z-index:1000;*/
+                /*background-color: rgba(255,255,255,0.70);*/
+                /*padding: 4px;*/
+                /*border-radius: 3px;*/
+			}
+            .ctl {
+                padding: 2px 10px 2px 10px;
+                background: rgba(255,255,255,0.9);
+                box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                text-align: right;
+                background-color:white; 
+                z-index:1000; 
+                position: absolute; 
+                right:12px; top:130px;
+                border-radius: 3px;
+            }
+        </style>
+        
+    </head>
+    <body style="padding: 0; margin: 0;">
+		
+        <div id="sidebar">
+            <a href="http://emapr.ceoas.oregonstate.edu/" target="_blank"><img id="logo" src="../../../../resources/images/graphic_logo_text.svg"></a>
+            <h1>Cascade–Siskiyou National Monument</h1>
+            <h5>From <a href="https://en.wikipedia.org/wiki/Cascade–Siskiyou_National_Monument" target="_blank">Wikipedia</a></h5>
+            <p>The Cascade–Siskiyou National Monument is a national monument that protects 86,774 acres (35,116 ha) of forest and grasslands at the junction of the Cascade Range and the Siskiyou Mountains in southwestern Oregon and northwestern California, United States. The monument is managed by the Bureau of Land Management as part of the National Landscape Conservation System and was established in a presidential proclamation by President Bill Clinton on June 9, 2000.</p>
+
+            <p>On January 12, 2017, President Barack Obama expanded the monument by 48,000 acres (19,000 ha). The expansion contains 5,000 acres (2,000 ha) in Northern California, in addition to 43,000 acres (17,000 ha) in Oregon.</p>
+            
+            <h5>From the <a href="http://emapr.ceoas.oregonstate.edu/">eMapR Lab</a></h5>
+            <p>
+            What you are seeing here is a time lapse video of annual image data recorded by Landsat Earth observing satellite from 1984 to 2016. The imagery is displayed as a false color composite to enhance the contrast between land cover types. Dark blue is mature conifer forest, light blue is young conifer forest possibly with some mix of deciduous vegetation, yellow is deciduous vegetation, orange/red is soil mixed with non-photosynthetic plant material, red/pink is barren rock/soil/sand, and pure blue is water.  
+            </p>
+            <p>In the video we see that much change has occurred in this region in 33 years. You’ll notice that more than half of the forested area experiences some change during this period. Forest harvesting and wildland fire are the major drivers of change throughout the series. Note the shielding effect the national monument designation has on the area within the white polygon after the year 2000 when it is largely protected from the intense harvesting happening on its eastern border. 
+            </p>
+        </div>
+		
+        <div id="map" style="width: 100%; height: 100%; padding: 0; margin: 0; background: #fff;"></div>
+		
+		<script>
+			
+            // define function for video overlay
+            //function updateOpacity(value) {
+            //    videoOverlay.setOpacity(value)
+            //}
+            
+            // define the basemaps 
+            var Esri_WorldImagery = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+               attribution: 'Tiles &copy; Esri'
+            });
+            var OpenTopoMap = L.tileLayer('http://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+                maxZoom: 17,
+                attribution: 'Map data: &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+            });
+            var OpenStreetMap_Mapnik = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            });
+            
+            // define the video bounds
+            var bounds = L.latLngBounds([[42.28035698458569, -122.79693603515624], [41.920672548686824, -122.11990356445312]]);  //uly, ulx, lry, lrx 
+
+            // define video path   
+            var videoUrls = ["cascade_siskiyou_national_monument.mp4"]
+            
+            // define video overlay
+            var videoOverlay = L.videoOverlay(videoUrls, bounds, {
+                opacity: 1
+            })
+            
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            // define the map
+            var map = L.map('map', {
+                layers: [Esri_WorldImagery],
+                zoomControl:false,
+                maxZoom: 16,
+                minZoom: 6
+            });
+            
+            // define the sidebar
+            var sidebar = L.control.sidebar('sidebar', {
+                closeButton: true,
+                position: 'left'
+            });
+            map.addControl(sidebar);
+            
+            
+            // create the layer control groups
+            var baseLayers = {"Satellite": Esri_WorldImagery, "TOPO": OpenTopoMap, "OSM": OpenStreetMap_Mapnik}
+            var overlays = {"RGB Vid": videoOverlay}
+
+            // add layer control to the map
+            L.control.layers(baseLayers, overlays, {collapsed: false}).addTo(map);
+            //L.control.layers(baseLayers, {collapsed: false}).addTo(map);
+            
+
+			
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		
+			//Create the photolayer
+			var photoLayer = L.photo.cluster({ spiderfyDistanceMultiplier: 1.2 }).on('click', function (evt) {
+				evt.layer.bindPopup(L.Util.template('<img src="{url}" height="auto" width="100%"/>', evt.layer.photo), {
+					className: 'leaflet-popup-photo',
+					minWidth: 400
+				}).openPopup();
+			});
+			
+			//Call the next function as soon as the page loads
+			window.onload = callForImages()
+            //Makes a request, loading the getimages.php file
+            function callForImages() {
+                //Create the request object
+                var httpReq = (window.XMLHttpRequest)?new XMLHttpRequest():new ActiveXObject("Microsoft.XMLHTTP");
+                //When it loads,
+                httpReq.onload = function() {
+                    //Convert the result back into JSON
+                    var result = JSON.parse(httpReq.responseText);
+                    //Load the images
+                    loadImages(result);
+                }
+                //Request the page
+                try {
+                    httpReq.open("GET", "getphotos.php", true);
+                    httpReq.send(null);
+                } catch(e) {
+                    console.log(e);
+                }
+            }
+            //Generates the images and sticks them into the photolayer
+            function loadImages(images) {
+				var photos = [];
+                //Loop over the images
+                for(var i = 0; i < images.length; i++) {
+					photos.push({
+						lat: images[i].lat,
+						lng: images[i].lng,
+						url: images[i].filename,
+						//If you have thumbnails, switch the comments on the following lines.
+						thumbnail: images[i].filename
+						//thumbnail: images[i].thumbnail
+					});
+                }
+				
+                
+                //Add the photos to the map
+                photoLayer.add(photos).addTo(map);
+				
+                ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                
+                
+                
+                //Zoom the map to the photos
+                map.fitBounds(photoLayer.getBounds());
+				
+                // show the sidebar
+                sidebar.show()
+            }
+        </script>
+    </body>
+</html>
