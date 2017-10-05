@@ -10,13 +10,9 @@
 	$email = $_POST['email'];
 
 
-
 	//#########################################################################################################
 	// UPLOAD THE VECTOR FILE
 	//#########################################################################################################	
-
-	// define the vector file outdir
-	$uploads_dir  = 'uploads/';
 	
 	// get the number of uploaded files
 	$num_files = count($_FILES['geoFiles']['tmp_name']);
@@ -55,63 +51,72 @@
 
 	// if there are file(s) to upload then do it
 	if($upLoadOK == 1){
+		// make a dir to hold everything for this request
+
+		$outDir = '/data/emapr_ddl/emapr_data_' . rand(10000, 99999) . '/';
+		mkdir($outDir);
+
 		// loop through the uploaded files and move them to the vector dir
+		$uploadedVectors = array();
 		for($i=0; $i < count($upLoadThese);$i++){
-			$target_file = $uploads_dir . basename($_FILES["geoFiles"]["name"][$upLoadThese[$i]]);
+			$target_file = $outDir . basename($_FILES["geoFiles"]["name"][$upLoadThese[$i]]);
+			array_push($uploadedVectors, $target_file);
 			move_uploaded_file($_FILES['geoFiles']['tmp_name'][$upLoadThese[$i]], $target_file);
 		}
-	}	
-	
-	$inVector = glob($uploads_dir . "*" . $globSearch);
-	$outVector = $uploads_dir . "final" . $globSearch;
-	$cmd = "'D:/Program Files/QGIS 2.18/OSGeo4W.bat' ogr2ogr -f GeoJSON -t_srs EPSG:5070 " . $outVector . ' ' . $inVector[0];
-	//echo $cmd;
-	//exec($cmd);
+		
 
+		
+		//#########################################################################################################
+		// MAKE A GEOJSON FILE IN EPSG:5070
+		//#########################################################################################################
 
-
-	//#########################################################################################################
-	// GET IMAGE DATA PATHS
-	//#########################################################################################################
-
-	// make data id/path table
-	$dataKey = array(
-		array("YODv1234","C:/xampp/htdocs/emapr_data/data/yod.tif"),
-		array("MAGv1234","C:/xampp/htdocs/emapr_data/data/mag.tif"),
-		array("DURv1234","C:/xampp/htdocs/emapr_data/data/dur.tif"),
-	);
-	
-	// get the data 
-	$dataPaths = array();
-	for($i=0; $i < count($dataCode);$i++){
-		$index = array_search($dataCode[$i], array_column($dataKey, 0));
-		array_push($dataPaths, $dataKey[$index][1]);
-	}
-	
-	
-
-	//#########################################################################################################
-	// CLIP THE DATA
-	//#########################################################################################################
-	
-	// make an out dir
-	$outDir = 'C:/xampp/htdocs/emapr_data/prep/emapr_data_' . rand(10000, 99999) . '/';
-	mkdir($outDir);
-	
-	// loop through the files
-	foreach($dataPaths as $inFile){
-		$outFile = $outDir . basename($inFile, pathinfo($inFile)['extension']) . 'tif';
-		$cmd = "python clip_raster.py " . $inFile . ' ' . $outFile . ' ' . $outVector . ' true 0';
+		$inVector = glob($outDir . "*" . $globSearch);
+		$outVector = $outDir . "final" . $globSearch;
+		$cmd = "ogr2ogr -f GeoJSON -t_srs EPSG:5070 " . $outVector . ' ' . $inVector[0];
+		//echo $cmd;
 		exec($cmd);
+
+
+
+		//#########################################################################################################
+		// GET IMAGE DATA PATHS
+		//#########################################################################################################
+
+		// make data id/path table
+		$dataKey = array(
+			array("YODv1234","/data/maps/jdb_test/yod.tif"),
+			array("MAGv1234","/data/maps/jdb_test/mag.tif"),
+			array("DURv1234","/data/maps/jdb_test/dur.tif"),
+		);
+		
+		// get the data 
+		$dataPaths = array();
+		for($i=0; $i < count($dataCode);$i++){
+			$index = array_search($dataCode[$i], array_column($dataKey, 0));
+			array_push($dataPaths, $dataKey[$index][1]);
+		}
+		
+		
+
+		//#########################################################################################################
+		// CLIP THE DATA
+		//#########################################################################################################
+		
+
+		// loop through the files
+		foreach($dataPaths as $inFile){
+			$outFile = $outDir . basename($inFile, pathinfo($inFile)['extension']) . 'tif';
+			$cmd = "python clip_raster.py " . $inFile . ' ' . $outFile . ' ' . $outVector . ' true 0';
+			exec($cmd);
+		}
+
+		
+		//#########################################################################################################
+		// ZIP THE DIR
+		//#########################################################################################################
+
+		//
+
 	}
-
-	
-	//#########################################################################################################
-	// ZIP THE DIR
-	//#########################################################################################################
-
-	//
-
-
 	
 ?>
