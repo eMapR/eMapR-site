@@ -6,26 +6,85 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="cache-control" content="no-cache">
         
+        <link rel="shortcut icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+             
         <link rel="stylesheet" href="resources/vendors/Skeleton-2.0.4/skeleton.css">
         <link rel="stylesheet" href="resources/vendors/Skeleton-2.0.4/normalize.css">
         <script src="https://use.fontawesome.com/eda0f11a1d.js"></script>
-        
+        <style>
+          #logo{
+            height: 40px;
+            width: auto;
+            margin-bottom: -7px;
+            margin-right: 10px;
+          }
+        </style>
     </head>
 	<body>
-        <div class="container">
-			<h1>eMapR Data Request Form</h1>
-			<form action="file_upload.php" method="post" enctype="multipart/form-data">
+     <div class="container">
+			<h1><a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="../../../resources/images/graphic_logo_text.svg"></a>Data Request Form</h1>
+			<form id='form' action="request_handler.php" method="post" enctype="multipart/form-data">
 				<label>Greatest Disturbance</label>
 				<input type="checkbox" name="data[]" value="YODv1234"> Year of detection <!--<i class="fa fa-info" aria-hidden="true"></i>--><br>
-				<input type="checkbox" name="data[]" value="MAGv1234"> Magnitude <!--<i class="fa fa-info" aria-hidden="true"></i>--><br>
+				<input type="checkbox" name="data[]" value="MAGv1234"> Magnitude (abs(dNBR)) <!--<i class="fa fa-info" aria-hidden="true"></i>--><br>
 				<input type="checkbox" name="data[]" value="DURv1234"> Duration <!--<i class="fa fa-info" aria-hidden="true"></i>--><br>
-				<label for="file" style="margin-top:8px;">Choose vector area of interest file</label>
+				<input type="checkbox" name="data[]" value="PREVALv1234"> Pre-disturbance NBR <!--<i class="fa fa-info" aria-hidden="true"></i>--><br>
+        <label for="file" style="margin-top:8px;">Choose vector area of interest file</label>
 				<p style="margin-bottom:2px; margin-top:-2px;">ESRI Shape file and GeoJSON accepted. If SHP, include all associated files</p>
 				<input type="file" name="geoFiles[]" id="fileToUpload"  multiple><br>
 				<label for="file" style="margin-top:10px;">Email</label>
-				<input type="email" name="email"><br>
+				<input type="email" name="email" size="35"><br>
 				<input type="submit" value="Submit" name="submit" style="margin-top:10px;">
-			</form>
+			</form>      
+      <div id='response'></div>
+      <div id='error'></div>
 		</div>
-    </body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
+    <script>
+    $(document).ready(function(){
+        $('form').submit(function(){
+         
+            // show that something is loading
+            $('#response').html("<b>Processing request. Please wait, this can take a few minutes. We'll also email you when the data are ready.</b>");
+         
+             // Prevent default posting of form - put here to work in case of errors
+             event.preventDefault();
+             
+             // Serialize the data in the form
+             var serializedData = $('form').serialize();
+             
+             console.log(serializedData)
+           
+            var form = $('form')[0]; // You need to use standard javascript object here
+            var formData = new FormData(form);
+
+
+             ajaxRequest = $.ajax({
+                url: "request_handler.php",
+                type: "POST",
+                data: formData,
+                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
+                processData: false, // NEEDED, DON'T OMIT THIS
+
+             });
+             
+             ajaxRequest.error(function (response){  
+                //alert(response);
+                $('#error').html(response)
+             })
+             
+             ajaxRequest.success(function (response){  
+                //alert(response);
+                $('#response').html(response)
+             });
+        });
+    });
+    </script>
+		</div>
+  </body>
 </html>
+
+
+
