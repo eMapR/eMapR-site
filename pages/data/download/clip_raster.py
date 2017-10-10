@@ -12,15 +12,18 @@ from osgeo import gdal
 import subprocess
 
 
-######################################################################################################################
-#inShape = '/vol/v2/stem/multi_lt_test/spatial/conus_tiles_northeast_epsg5070.geojson'
-#inRaster = '/vol/v1/general_files/datasets/spatial_data/nlcd/nlcd_2001_v2/nlcd_2001_landcover_3x3_equal.tif'
-#outRaster = '/vol/v2/stem/multi_lt_test/spatial/nlcd_2001_landcover_3x3_equal_ne.tif'
-#clipRaster = 'true'
-#burnValue = 0
-######################################################################################################################
+def nearestExt(ulx, uly, lrx, lry):        
+
+    ulxAdj = round(ulx / 30.0) * 30 - 15
+    ulyAdj = round(uly / 30.0) * 30 + 15
+    lrxAdj = round(lrx / 30.0) * 30 + 15
+    lryAdj = round(lry / 30.0) * 30 - 15
+                       
+    return [ulxAdj, ulyAdj, lrxAdj, lryAdj]
+
 
 def main(inRaster, outRaster, inShape, clipRaster, burnValue):
+  print('Clipping raster(s)\n')
   
   # make sure that burnValue is a str 
   if type(burnValue) is int:
@@ -36,8 +39,9 @@ def main(inRaster, outRaster, inShape, clipRaster, burnValue):
   inDataSource = driver.Open(inShape, 0)
   extent = inDataSource.GetLayer().GetExtent()
   
-  # format the exent as -projwin arguments for gdal translate
-  projwin = '-projwin {} {} {} {} '.format(extent[0], extent[3], extent[1], extent[2])  
+  # snap coords to grid center
+  ententSnap = nearestExt(extent[0], extent[3], extent[1], extent[2])
+  projwin = '-projwin {} {} {} {} '.format(ententSnap[0], ententSnap[1], ententSnap[2], ententSnap[3])
   
   # figure out what file to make
   outExt = os.path.splitext(outRaster)[1]  
@@ -47,7 +51,7 @@ def main(inRaster, outRaster, inShape, clipRaster, burnValue):
     of = 'GTiff'
   
   # make gdal_translate cmd and run it as subprocess
-  cmd = 'gdal_translate -of '+of+' -tr 30 30 ' + projwin + inRaster +' '+ outRaster
+  cmd = '/usr/lib/anaconda/bin/gdal_translate --config GDAL_DATA /usr/lib/anaconda/share/gdal -of '+of+' -tr 30 30 -a_srs EPSG:5070 ' + projwin + inRaster +' '+ outRaster
   subprocess.call(cmd, shell=True)
   
   # if values outside the inShape should be chagned to some 
@@ -56,7 +60,7 @@ def main(inRaster, outRaster, inShape, clipRaster, burnValue):
     src_ds = gdal.Open(outRaster)
     src_ds.RasterCount 
     bands = ' '.join(['-b '+str(band+1) for band in range(src_ds.RasterCount)])
-    cmd = 'gdal_rasterize -i -burn '+burnValue+' '+bands+' '+inShape+' '+outRaster
+    cmd = '/usr/lib/anaconda/bin/gdal_rasterize --config GDAL_DATA /usr/lib/anaconda/share/gdal -i -burn '+burnValue+' '+bands+' '+inShape+' '+outRaster
     subprocess.call(cmd, shell=True)
 
 if __name__ == "__main__":  
