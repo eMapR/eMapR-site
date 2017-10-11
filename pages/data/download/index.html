@@ -44,42 +44,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js "></script>
     <script>
     $(document).ready(function(){
-        $('form').submit(function(){
+      $('form').submit(function(){
          
-            // show that something is loading
-            $('#response').html("<b>Processing request. Please wait, this can take a few minutes. We'll also email you when the data are ready.</b>");
+        // show that something is loading
+        $('#response').html("<b>Processing request. Please wait, this can take a few minutes. We'll also email you when the data are ready.</b>");
          
-             // Prevent default posting of form - put here to work in case of errors
-             event.preventDefault();
+        // prevent default posting of form - put here to work in case of errors
+        event.preventDefault();
              
-             // Serialize the data in the form
-             var serializedData = $('form').serialize();
-             
-             console.log(serializedData)
-           
-            var form = $('form')[0]; // You need to use standard javascript object here
-            var formData = new FormData(form);
-
-
-             ajaxRequest = $.ajax({
-                url: "request_handler.php",
-                type: "POST",
-                data: formData,
-                contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-                processData: false, // NEEDED, DON'T OMIT THIS
-
-             });
-             
-             ajaxRequest.error(function (response){  
-                //alert(response);
-                $('#error').html(response)
-             })
-             
-             ajaxRequest.success(function (response){  
-                //alert(response);
-                $('#response').html(response)
-             });
+        // serialize the data in the form     
+        var form = $('form')[0]; // need to use standard javascript object here
+        var formData = new FormData(form);
+  
+        // submit the data and deal with reponses
+        ajaxRequest = $.ajax({
+          url: "request_handler.php",
+          type: "POST",
+          data: formData,
+          contentType: false,
+          processData: false,
         });
+             
+        ajaxRequest.error(function (response){  
+          $('#error').html(response)
+        });
+      
+        ajaxRequest.success(function (response){  
+          $('#response').html(response)
+        });
+     
+      });
     });
     </script>
 		</div>

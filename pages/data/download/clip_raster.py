@@ -5,11 +5,11 @@ Created on Fri Jun 30 10:51:30 2017
 @author: braatenj
 """
 
-import os
-import sys
-from osgeo import ogr
-from osgeo import gdal
+import os, sys
 import subprocess
+if 'GDAL_DATA' not in os.environ:
+    os.environ['GDAL_DATA'] = r'/usr/lib/anaconda/share/gdal'
+from osgeo import gdal, ogr
 
 
 def nearestExt(ulx, uly, lrx, lry):        
