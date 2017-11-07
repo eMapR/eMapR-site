@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html style="background-color:#474547;">
+	<head>
+        <title>OSU eMapR Lab | CONUS TC 1984-2016</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="cache-control" content="no-cache">
+            <link rel="shortcut icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+            <link rel="icon" href="../../../resources/images/favicon.ico" type="image/x-icon">
+            
+			<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+			<script src="nlcd_class_controller_noget.js"></script>
+			
+			<!--
+            <script>
+              (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+              (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+              m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+              })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+              ga('create', 'UA-99603309-2', 'auto');
+              ga('send', 'pageview');
+            </script>
+			-->
+			
+            <style>
+                #logo{
+                    position: fixed;
+                    height: 50px;
+                    width: auto;
+                    left: 15px;
+                    top: 15px;
+                    z-index:100;
+                    background-color: azure;
+                    padding: 4px;
+                    border-radius: 5px;
+                }
+            </style>
+    </head>    
+    <body>
+        <a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="../../../resources/images/graphic_logo_text.svg"></a>
+		<h4 style="text-align:center; display: block; margin: auto; margin-top:25px; margin-bottom: 15px; color:white; width:900px">These videos show the percent area of a given NLCD class within summarizing hexagons over the conterminous US for each year from 1984-2016. The color scales from light blue to dark blue, respectively indicating low to high percent area.</h4>
+
+		<div ng-app="myApp">
+			<div ng-controller="nlcdClassCtrl">
+				<div ng-repeat="class in nlcdClasses">
+					<h1 style="text-align:center; display: block; margin: auto; margin-top:25px; margin-bottom: 15px; color:white">{{class.name}}</h1>
+
+					<video autoplay loop controls style="display: block; margin: auto; margin-bottom:200px">
+						<source ng-src="{{class.src}}" type="video/mp4">
+						Your browser does not support the video tag.
+					</video>
+					
+					
+					<img ng-src="{{availableImages[currentImage].src}}"/>
+					
+					
+					<p ng-cloak>{{ people.name }} </p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
