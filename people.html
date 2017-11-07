@@ -113,7 +113,7 @@
                             <i>
                                 <p ng-cloak>{{ people.position }}</p>
                             </i>
-                            <p ng-cloak ng-bind-html-unsafe="people.bio"></p> <!--{{ people.bio }}-->
+                            <p ng-bind-html="$sce.trustAsHtml(people.bio)"></p> <!--{{ people.bio }}-->
                         </div>
 					</div>
 					
