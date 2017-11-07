@@ -83,6 +83,7 @@
 			</div>
 			<div ng-app="myApp">
 				<div ng-controller="peopleCtrl">
+					<!-- STUDENTS -->
 					<h3 class="w3-margin-bottom">Students</h3>
 					<div class="w3-row w3-card-4  w3-margin-bottom w3-padding-8" ng-repeat="people in people.student">
                         <div class="w3-col m3">
@@ -98,6 +99,25 @@
                             <p ng-cloak>{{ people.bio }}</p>
                         </div>
 					</div>
+					
+					<!-- VISITING -->
+					<h3 class="w3-margin-bottom">Students</h3>
+					<div class="w3-row w3-card-4  w3-margin-bottom w3-padding-8" ng-repeat="people in people.student">
+                        <div class="w3-col m3">
+                            <img class="w3-image w3-grayscale-min" ng-src= '{{ people.img }}'> <!--class="w3-left"-->
+                        </div>
+                        <div class="w3-col m9">
+                            <b>
+                                <p ng-cloak>{{ people.name }} </p>
+                            </b>
+                            <i>
+                                <p ng-cloak>{{ people.position }}</p>
+                            </i>
+                            <p ng-cloak>{{ people.bio }}</p>
+                        </div>
+					</div>
+					
+					<!-- FACULTY -->
 					<h3 class="w3-margin-bottom">Faculty</h3>
 					<div class="w3-row w3-card-4 w3-margin-bottom w3-padding-8" ng-repeat="people in people.faculty">
 						<div class="w3-col m3">
@@ -126,6 +146,8 @@
 						     </div>
 						</div>
 						-->
+					
+					<!-- ALUMNI -->
 					<h3 class="w3-margin-bottom">Alumni</h3>
 					<div class="w3-row w3-card-4 w3-margin-bottom w3-padding-8" ng-repeat="people in people.alumni">
 						<div class="w3-col m3">
