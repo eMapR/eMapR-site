@@ -85,8 +85,12 @@
                 <p>In this command we use the -f (file format) argument to define GeoJSON as the out file format and the -dialect argument to define sqlite as the SQL dialect to use in our query. Note that "OGRGeoJSON" is the default layer name of a GeoJSON file. Get more info on this <a href="http://www.gdal.org/drv_geojson.html" target="_blank">here</a></p>
 
 
-                    
-                    
+				<h3>Apply a fixed buffer to an ESRI shapefile</h3>
+				<p>To apply a buffer we use the ST_buffer function on the geometry field of the inFile shapefile</p>
+                <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">ogr2ogr -f "ESRI Shapefile" [outFile.shp] [inFile.shp] -dialect sqlite -sql "select ST_buffer(geometry, [buffer distance]) as geometry FROM [inFile]"  
+                <p>Example:</p>
+                <pre style="overflow-x:auto" class="w3-code w3-light-grey notranslate">ogr2ogr -f "ESRI Shapefile" [bufferedFile.shp] [origFile.shp] -dialect sqlite -sql "select ST_buffer(geometry, [1000]) as geometry FROM [origFile]"  
+				
                     
                     
                     
