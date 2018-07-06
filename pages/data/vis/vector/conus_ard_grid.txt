@@ -1,0 +1,3 @@
+https://landsat.usgs.gov/ard
+
+https://landsat.usgs.gov/sites/default/files/documents/CONUS_ARD_grid.zip

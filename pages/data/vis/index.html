@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+        <html lang="en">
+          <head>
+            <title>OSU eMapR Lab | LTviz</title>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta http-equiv="cache-control" content="no-cache">
+            <link rel="shortcut icon" href="./libs/Leaflet.draw/./libs/Leaflet.draw/resources/images/favicon.ico" type="image/x-icon">
+            <link rel="icon" href="./libs/Leaflet.draw/./libs/Leaflet.draw/resources/images/favicon.ico" type="image/x-icon">
+
+			<!-- W3.CSS -->
+			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            
+			<!-- Leaflet -->
+			<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+			<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+            
+			<!--<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.css" />
+            <script src="http://cdn.leafletjs.com/leaflet-0.7.5/leaflet.js"></script>-->
+			
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+
+			
+			
+			<script src="L.Map.Sync.js"></script> <!--https://github.com/jieter/Leaflet.Sync-->
+			<script src="leaflet-side-by-side.min.js"></script> <!--https://github.com/digidem/leaflet-side-by-side-->
+			<script src="leaflet-tilelayer-colorizr.js"></script> <!--https://github.com/hnrchrdl/leaflet-tilelayer-colorizr-->
+
+			
+			<link rel="stylesheet" href="./libs/Leaflet.draw/src/leaflet.draw.css"/>
+			<script src="./libs/Leaflet.draw/src/Leaflet.draw.js"></script>
+			<script src="./libs/Leaflet.draw/src/Leaflet.Draw.Event.js"></script>
+
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.Poly.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.SimpleShape.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.Rectangle.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.Marker.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.CircleMarker.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/Edit.Circle.js"></script>
+
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Feature.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Polyline.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Polygon.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.SimpleShape.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Rectangle.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Circle.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.Marker.js"></script>
+			<script src="./libs/Leaflet.draw/src/draw/handler/Draw.CircleMarker.js"></script>
+
+			<script src="./libs/Leaflet.draw/src/ext/TouchEvents.js"></script>
+			<script src="./libs/Leaflet.draw/src/ext/LatLngUtil.js"></script>
+			<script src="./libs/Leaflet.draw/src/ext/GeometryUtil.js"></script>
+			<script src="./libs/Leaflet.draw/src/ext/LineUtil.Intersect.js"></script>
+			<script src="./libs/Leaflet.draw/src/ext/Polyline.Intersect.js"></script>
+			<script src="./libs/Leaflet.draw/src/ext/Polygon.Intersect.js"></script>
+
+			<script src="./libs/Leaflet.draw/src/Control.Draw.js"></script>
+			<script src="./libs/Leaflet.draw/src/Tooltip.js"></script>
+			<script src="./libs/Leaflet.draw/src/Toolbar.js"></script>
+
+			<script src="./libs/Leaflet.draw/src/draw/DrawToolbar.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/EditToolbar.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/EditToolbar.Edit.js"></script>
+			<script src="./libs/Leaflet.draw/src/edit/handler/EditToolbar.Delete.js"></script>
+					
+			<link rel="stylesheet" href="styleRange.css"/>
+			
+            <style>
+                body { margin:0; padding:0; }
+                body, table, tr, td, th, div, h1, h2, input { font-family: "Calibri", "Trebuchet MS", "Ubuntu", Serif; font-size: 11pt; }
+                html,body { height:100%; }
+				
+				#container {
+					display: flex;
+					height:100%;
+				}
+				
+				#left {
+					flex: 0 0 200px; /* do not grow, do not shrink, start at 200px */
+					box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+					z-index:1000;
+				}
+
+				#right {
+					flex: 1;  /* grow */
+				}
+				
+				
+				#map, #map3 {
+					width: 100%;
+					height:100%;
+				}
+                .ctl {
+                    padding: 2px 10px 2px 10px;
+                    background: white;
+                    background: rgba(255,255,255,0.9);
+                    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+                    border-radius: 5px;
+                    text-align: right;
+                }
+                .title {
+                    font-size: 18pt;
+                    font-weight: bold;
+                }
+                .src {
+                    font-size: 10pt;
+                }
+				.pointer {
+					cursor: pointer;
+				}
+                #logo{
+                    position: absolute;
+                    height: 50px;
+                    width: auto;
+                    left: 15px;
+                    bottom: 15px;
+                    z-index:100
+                }
+				
+
+				<!--html, body { width: 100%; height: 100%; margin: 0; }-->
+				#map1, #map2 {height: 100%; width: 49.5%}
+				#map1 { float: left;}
+				#map2 { float: right;}
+				
+				
+				
+				/* Change cursor when over entire map */
+.leaflet-container {
+  cursor: default !important;
+}
+				
+				
+				
+				
+				.hide {
+				   position: absolute !important;
+				   top: -9999px !important;
+				   left: -9999px !important;
+				}
+				
+				.show {
+				   position: relative !important;
+				}
+	
+	
+	
+	
+	
+	
+	             #plot{
+                    position: absolute;
+                    bottom: 15px !important;
+                    left: 200px;
+                    right: 0px;
+                    margin: 0 auto;
+                    height: 180px;
+                    width: 810px;
+                    z-index: 2000;
+                    background-color: rgba(255,255,255,0.90);  /*#ffffff;*/
+                    border-radius: 8px;
+					padding:5px;
+                }
+				
+				
+	
+	
+button:focus {outline:0;}
+				
+            </style>
+
+        </head>
+        <body>
+			  
+			<div id="container">
+			
+				<div id="left" class="card-4" style="">
+					
+					<h5 class="w3-margin-left"><strong>TimeMachine.v1</strong></h5>
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Select Data</button>	
+					<div id="dataSelectContainer" class="w3-hide sectionContainer">	
+						<ul id="dataList" class="w3-ul w3-margin w3-hoverable pointer">
+						
+						</ul>
+					</div>
+					  
+					  
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">View Single Year</button>	
+					<div id="singleYearContainer" class="w3-hide w3-margin sectionContainer">	
+					   <div class="slidecontainer"><input id="year" type="range" min="1990" max="2012" value="1990" class="slider dataYear"><p class='sliderLabel'>Year: <span>1990</span></p></div>
+					   <div class="slidecontainer"><input id="test" type="range" min="0" max="1" step="0.1" value="1" class="slider alpha"><p class='sliderLabel'>Opacity: <span>1</span></p></div>
+					</div>
+					  
+					  
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Compare Years | Flicker</button>	
+					<div id="flickerContainer" class="w3-hide w3-margin sectionContainer">	  
+					   <div class="slidecontainer"><input id="yearFlick1" type="range" min="1990" max="2012" value="1990" class="slider year yearFlick"><p class='sliderLabel'>Early Year: <span>1990</span></p></div>
+					   <div class="slidecontainer"><input id="yearFlick2" type="range" min="1990" max="2012" value="2012" class="slider year yearFlick"><p class='sliderLabel'>Late Year: <span>2012</span></p></div>
+					   <div class="slidecontainer"><input id="flickerSpeed" type="range" min="0" max="1000" step="10" value="300" class="slider" style="direction: rtl;"><p class='sliderLabel'>Flicker Speed (ms): <span>300</span></p></div>
+					   <div id="flicker" class="pointer w3-container w3-block w3-grey w3-center" text-align: center;>Go!</div>
+					</div> 
+					
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Compare Years | Split</button>	
+					<div id="splitContainer" class="w3-hide w3-margin sectionContainer">	  
+					   <div class="slidecontainer"><input id="yearSplit1" type="range" min="1990" max="2012" value="1990" class="slider year"><p class='sliderLabel'>Early Year: <span>1990</span></p></div>
+					   <div class="slidecontainer"><input id="yearSplit2" type="range" min="1990" max="2012" value="2012" class="slider year"><p class='sliderLabel'>Late Year: <span>2012</span></p></div>
+					</div>
+					
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Compare Years | Swipe</button>	
+					<div id="swipeContainer" class="w3-hide w3-margin sectionContainer">	  
+					   <div class="slidecontainer"><input id="yearSwipe1" type="range" min="1990" max="2012" value="1990" class="slider year"><p class='sliderLabel'>Early Year: <span>1990</span></p></div>
+					   <div class="slidecontainer"><input id="yearSwipe2" type="range" min="1990" max="2012" value="2012" class="slider year"><p class='sliderLabel'>Late Year: <span>2012</span></p></div>
+					</div> 
+					
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Reduce Area</button>	
+					<div id="reduceContainer" class="w3-hide w3-margin sectionContainer">	  
+
+					</div> 
+					
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Plot Multi-points</button>	
+					<div id="multiPointContainer" class="w3-hide w3-margin sectionContainer">	  
+						<p>Use draw tool to add points</p>
+					</div> 
+					
+					
+					<button class="w3-button w3-block w3-left-align w3-border w3-light-gray w3-card-2 w3-opacity-min w3-hover-opacity-off sectionButton">Get Data</button>	
+					<div id="getDataContainer" class="w3-hide w3-margin sectionContainer">	  
+
+					</div> 
+					<a href="http://emapr.ceoas.oregonstate.edu/"><img id="logo" src="http://emapr.ceoas.oregonstate.edu/resources/images/graphic_logo_text.svg"></a>
+				</div>
+				
+				
+				<div id="right">
+					<div id="map" class="show"></div>
+					<div id="map1" class="hide"></div>
+					<div id="map2" class="hide"></div>
+
+						<div id="map3" class="hide"></div>
+
+					
+					<div id="plot" class="w3-card-4" style="display: none;">
+						<img id="hidePlot" src="cancel.svg" style="height:24px; width:auto; position:absolute; right:-5px; top:-5px; background-color:white; border-radius:12px;">
+					</div>
+				</div>
+				
+			</div>
+			
+			
+
+			
+			<!--
+			<div id="mapContainerL1">
+				
+				<div id="mapContainerL2">
+					<div id="map" class="show"></div>
+					<div id="map1" class="hide"></div>
+					<div id="map2" class="hide"></div>
+					<div id="map3" class="hide"></div>
+				</div>
+				
+				<div id="plot" class="w3-card-4" style="display: none;">
+					<img id="hidePlot" src="cancel.svg" style="height:24px; width:auto; position:absolute; right:-5px; top:-5px; background-color:white; border-radius:12px;">
+				</div>
+			</div>-->
+			
+
+
+
+			
+			
+			
+			
+			<script>
+
+			// SOME GLOBALS	
+			var tileURL = 'biomass_tws_z11'			 // the default tile layer to load
+			var dataSet = {                          // the default dataset - this could just be the first one in the dataSet list that is received
+					"name":"Biomass",
+					"minYear":1990,
+					"maxYear":2012,
+					"tmsURL":"biomass_tws_z11",
+					"metaDateURL":"url",
+					"id":"biomassLI"
+				}
+			var lastActiveSection = 'singleYearContainer' // tracker for whatever section of the menu was last active - default to single year display
+			var lyr1
+			var lyr2
+			var flickerClean = 1
+			var clean = {
+				"flicker": 1,
+				"split": 1,
+				"swipe": 1,
+			}
+
+
+//############################################################################################################################################			
+//############### SWITCHING DATASETS  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################			
+			
+			// this object will be retrieved from the server when page is loading - it will tell us what data is available and how to get it and set the interface
+			var dataSets = [
+				{
+					"name":"Biomass",
+					"minYear":1990,
+					"maxYear":2012,
+					"tmsURL":"/data/tms/WAORCA_pystem/landcover", //"./biomass_tws_z11", 
+					"metaDateURL":"url",
+					"id":"biomassLI",
+					"dataURL":""
+				},
+				{
+					"name":"Land Cover",
+					"minYear":1990,
+					"maxYear":2012,
+					"tmsURL":"/data/tms/WAORCA_pystem/landcover", //"./landcover_tws_z11",
+					"metaDateURL":"url",
+					"id":"landcoverLI",
+					"dataURL":""
+				}
+			]
+
+			// a function to return the the dataset object for the data set that was clicked on in the dataset menu
+			function getDataSetClicked(id){
+				for(var i = 0; i < dataSets.length; i++) {
+					if (dataSets[i].id == id) {
+						return dataSets[i]
+					}	
+				}
+			}
+			
+			
+			// load the dataset options
+			$(document).ready(function(){
+				for(var i=0;i<dataSets.length;i++){
+					var dataInfo = dataSets[i]
+					$("#dataList").append('<li id='+dataInfo.id+'>'+dataInfo.name+'</li>')
+				}
+			})
+			
+			
+			// https://stackoverflow.com/questions/10920355/attaching-click-event-to-a-jquery-object-not-yet-added-to-the-dom
+			$(document).on("click", "#dataList li", function(){
+				dataSet = getDataSetClicked($(this).attr('id'))
+				tileURL = dataSet.tmsURL
+				clearMapTileLayers()
+
+				var year = $("#year").val()
+				map.removeLayer(lyr);
+				lyr = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not // './'+
+				map.addLayer(lyr)
+			})
+			
+//############################################################################################################################################			
+//############### SWITCHING DATASETS /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################			
+			
+			
+			
+			
+			
+			
+			// SET YEAR SLIDER MIN AND MAX	
+			function setMinMax(){
+				//<input type="number" max="???" min="???" step="0.5" id="myInput"/>
+				// TODO: function to get the min and max from a json file or yml
+				// ... returns an object with min and max
+				
+				// TODO: make sure that these all have a class and just call this once on the class - I think $(".slider.year") will work
+				$("#year").attr({"min" : yr.min, "max" : yr.max});
+				$("#yearFlick1").attr({"min" : yr.min, "max" : yr.max});
+				$("#yearFlick2").attr({"min" : yr.min, "max" : yr.max});
+			}
+			
+			
+			
+
+			
+			
+			
+
+
+			
+	
+//############################################################################################################################################			
+//############### SINGLE YEAR HANDLERS  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################
+
+			// ideas for preventing flicker: https://stackoverflow.com/questions/25139505/how-to-keep-old-tiles-until-each-new-tile-is-loaded-when-redrawing-a-layer-in-le
+			$("#year").change(function(){
+				var year = $(this).val()
+				map.removeLayer(lyr);
+				lyr = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not
+				map.addLayer(lyr)
+			});
+			
+			
+//############################################################################################################################################			
+//############### SINGLE YEAR HANDLERS /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################
+
+	
+			
+//############################################################################################################################################			
+//############### FLICKER HANDLERS  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################
+			
+			// a function to stop flickering and reset the GO! button
+			function stopFlicker(){
+				$("#flicker").removeClass('selected w3-blue').addClass('w3-grey');
+				$("#flicker").html('Go!')
+				clearInterval(flickerInter);
+			};
+			
+			var flicker = 0	
+			// HANDLER FOR WHEN CLICKING ON THE FLICKER GO!/STOP! BUTTON
+			$("#flicker").click(function(event) {				
+				event.preventDefault();
+				// should we start or stop the flicker
+				if($(this).hasClass("selected")) {
+					// stop flicker
+					stopFlicker() // doing this as a function because we also want to stop flickering is someone just clicks on a new section without stopping the flicker
+				} else {   
+					// start flicker
+					$(this).removeClass('w3-grey').addClass('selected w3-blue');
+					$(this).html('Stop!')
+					flickerInterval()
+			   }
+			});
+			
+			// FUNCTION TO DEAL WITH CHANGES ON THE FLICKER YEAR SLIDERS
+			function changeFlickerYears(id){
+				if(id == 'yearFlick1'){
+					var year1 = $("#yearFlick1").val() 
+					lyr1 = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+					map.addLayer(lyr1);
+				} else if(id == 'yearFlick2'){
+					var year2 = $("#yearFlick2").val() 
+					lyr2 = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+					map.addLayer(lyr2);
+				}
+			}
+			
+			// HANDLER FOR WHEN THE FLICKER YEAR SLIDERS CHANGES
+			$(".yearFlick").change(function(){
+				// id flicker running - if so stop it and then restart it - else just get out
+				if($("#flicker").hasClass("selected")) {
+					clearInterval(flickerInter);
+					changeFlickerYears($(this).attr('id'))					
+					flickerInterval()
+				} else {
+					changeFlickerYears($(this).attr('id'))
+				}
+			});
+			
+			// HANDLER FOR WHEN THE FLICKER SPEED SLIDER CHANGES
+			$("#flickerSpeed").change(function(){
+				// id flicker running - if so stop it and then restart it - else just get out
+				if($("#flicker").hasClass("selected")) {
+					var flickerSpeed = $("#flickerSpeed").val();
+					clearInterval(flickerInter);
+					flickerInterval()
+				}
+			});
+			
+			// FUNCTION TO START FLICKERING THE LAYERS
+			var flickerInter;
+			function flickerInterval(){
+				var flickerSpeed = $("#flickerSpeed").val();	
+				// start with a fresh map anytime a new interval is started - weird this happened if not
+				map.removeLayer(lyr2)
+				map.removeLayer(lyr1)
+				map.addLayer(lyr2)
+				map.addLayer(lyr1)
+				flickerInter = setInterval(function(){ runFlicker() }, flickerSpeed);
+			}
+			
+			// FUNCTION TO TURN SET AND REMOVE TRANSPARENCY
+			function runFlicker(){
+				if (flicker == 0) {flicker = 1} else {flicker = 0}
+				lyr1.setOpacity(flicker)
+			}
+
+//############################################################################################################################################			
+//############### FLICKER HANDLERS /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################
+
+
+
+//############################################################################################################################################			
+//############### SPLIT HANDLERS  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################
+
+
+			$("#yearSplit1").change(function(){
+				var year = $(this).val()
+				lyr1 = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not
+				map1.addLayer(lyr1)
+			});
+			
+			$("#yearSplit2").change(function(){
+				var year = $(this).val()
+				lyr2 = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not
+				map2.addLayer(lyr2)
+			});
+
+
+//############################################################################################################################################			
+//############### SPLIT HANDLERS /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################
+
+
+
+
+
+//############################################################################################################################################			
+//############### SWIPE HANDLERS  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################
+
+
+			$("#yearSwipe1").change(function(){
+				//var year = $(this).val()
+				//lyr1 = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not
+				swipe()
+			});
+			
+			$("#yearSwipe2").change(function(){
+				//var year = $(this).val()
+				//lyr2 = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13}); // depends on global variable here - not
+				swipe()
+			});
+			
+			
+			
+			//https://github.com/digidem/leaflet-side-by-side/issues/11
+			
+			function swipe(){
+				var year1 = $("#yearSwipe1").val()
+				var year2 = $("#yearSwipe2").val()
+				leftSwipe = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+				rightSwipe = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+				
+				map3.removeLayer(leftSwipe);
+				map3.removeLayer(rightSwipe);
+				map3.addLayer(leftSwipe);
+				map3.addLayer(rightSwipe);
+				sideBySide.setLeftLayers(leftSwipe);
+				sideBySide.setRightLayers(rightSwipe);
+			};
+			
+			
+				
+
+
+//############################################################################################################################################			
+//############### SPLIT HANDLERS /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################
+
+
+			
+			
+			function clearMapTileLayers(){
+				stopFlicker(); // stop the flickering and reset the button if we change sections - do it regardless - should check to see if it was the previous open or actively flickering
+				if(map.hasLayer(lyr) == 1) { map.removeLayer(lyr); }
+				if(map.hasLayer(lyr1) == 1) { map.removeLayer(lyr1); }
+				if(map.hasLayer(lyr2) == 1) { map.removeLayer(lyr2); }
+				if(drawControl == 1) {map.removeControl(drawControl);}
+			}
+			
+			
+			function displayHandler(id, repeat=false){
+				console.log('in the main handler')
+				console.log(id)
+				switch(id){
+					case 'singleYearContainer':
+						if(lastActiveSection == id & repeat == false){return}
+						console.log('in single year view')
+						// clear the maps and layers
+						$("#map").removeClass('hide').addClass('show');
+						$("#map1, #map2").removeClass('show').addClass('hide');
+						$("#map3").removeClass('show').addClass('hide');
+						clearMapTileLayers();
+						var year = $("#year").val()
+						lyr = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						map.addLayer(lyr);
+					break;
+					case 'flickerContainer':
+						if(lastActiveSection == id & repeat == false){return}
+						console.log('in flicker prep')
+						// clear the maps and layers
+						$("#map").removeClass('hide').addClass('show');
+						$("#map1, #map2").removeClass('show').addClass('hide');
+						$("#map3").removeClass('show').addClass('hide');
+						clearMapTileLayers();
+						// add early and late layers as default to map
+						var year1 = $("#yearFlick1").val()
+						var year2 = $("#yearFlick2").val()
+						lyr1 = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						lyr2 = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						map.addLayer(lyr2); // late - start on bottom
+						map.addLayer(lyr1); // early - start on top
+					break;
+					case 'splitContainer':
+						if(lastActiveSection == id & repeat == false){return}
+						console.log('in splitContainer prep')
+						// clear the maps and layers
+						$("#map").removeClass('show').addClass('hide');
+						$("#map1, #map2").removeClass('hide').addClass('show');
+						$("#map3").removeClass('show').addClass('hide');
+						clearMapTileLayers();
+						// add early and late layers as default to map
+						var year1 = $("#yearSplit1").val()
+						var year2 = $("#yearSplit2").val()
+						lyr1 = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						lyr2 = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						map1.addLayer(lyr1);
+						map2.addLayer(lyr2);
+					break;
+					case 'swipeContainer':
+						if(lastActiveSection == id & repeat == false){return}
+						console.log('in swipeContainer prep')
+						// clear the maps and layers
+						$("#map").removeClass('show').addClass('hide');
+						$("#map1, #map2").removeClass('show').addClass('hide');
+						$("#map3").removeClass('hide').addClass('show');
+						clearMapTileLayers();
+						// add early and late layers as default to map
+						swipe()
+					break;
+					case 'multiPointContainer':
+						if(lastActiveSection == id & repeat == false){return}
+						console.log('in multiPointContainer prep')
+						// clear the maps and layers
+						$("#map").removeClass('hide').addClass('show');
+						$("#map1, #map2").removeClass('show').addClass('hide');
+						$("#map3").removeClass('show').addClass('hide');
+						clearMapTileLayers();
+						var year = $("#year").val()
+						lyr = L.tileLayer(tileURL+'/'+year+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+						map.addLayer(lyr);
+						map.addControl(drawControl);
+						drawControl = 1
+					break;
+				}
+			}
+			
+			
+			
+			// DO STUFF WHEN A SECTION BUTTON IS PRESSED
+			var drawControl = 0
+			
+			$('.sectionButton').click(function(){
+				// show/hide the contents of the sections
+				$('.sectionContainer').removeClass('w3-show')
+				$(this).next('.sectionContainer').addClass('w3-show')
+				
+				// do a default action for each section
+				var id = $(this).next('.sectionContainer').attr('id')
+				console.log(lastActiveSection)
+				displayHandler(id, repeat=false)
+				lastActiveSection = id
+
+			})
+			
+
+			
+			
+			// HANDLER FOR CLICKING ON THE PLOT EXIT BUTTON
+			$("#hidePlot").click(function(){
+				if($("#plot").is(":visible")){
+					$("#plot").hide();
+				} else {
+					$("#plot").show();
+				}
+			});
+
+			
+			
+			
+			
+			
+		
+
+
+
+
+			// CHANGE DISPLAY WHEN DATA YEARS CHANGE			
+			$(".slider").on("input", function() {
+				var year = $(this).val()
+				$(this).siblings(".sliderLabel").children('span').html(year)
+			});
+			
+			
+			
+
+			
+			// NEED to make this function figure out which opacity slider was updated and handle updating different lyr
+			$(".alpha").change(function(){
+				var opacity = $(this).val()
+				// NEED to make this figure out which layer should be updated
+				lyr.setOpacity(opacity)
+			});
+	
+	
+	
+
+
+
+
+
+
+
+			var osm = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+			var osm1 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+			var osm2 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+			var osm3 = L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'});
+
+
+			// Overlay layers (TMS)
+			var lyr = L.tileLayer(tileURL+'//1990/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+
+
+			
+			
+			
+			// Map
+			var map = L.map('map', {
+				center: [ 44.190762, -122.553686],
+				zoom: 10,
+				minZoom: 0,
+				maxZoom: 13,
+				layers: [osm],
+				zoomControl:false
+			});
+			
+			var map1 = L.map('map1', {
+				center: [ 44.190762, -122.553686],
+				zoom: 10,
+				minZoom: 0,
+				maxZoom: 13,
+				layers: [osm1],
+				zoomControl:false
+			});
+			
+			var map2 = L.map('map2', {
+				center: [ 44.190762, -122.553686],
+				zoom: 10,
+				minZoom: 0,
+				maxZoom: 13,
+				layers: [osm2],
+				zoomControl:false
+			});
+			
+			var map3 = L.map('map3', {
+				center: [ 44.190762, -122.553686],
+				zoom: 10,
+				minZoom: 0,
+				maxZoom: 13,
+				layers: [osm3],
+				zoomControl:false
+			});
+			
+
+			
+			// INITIALIZE MAPS
+			map.addLayer(lyr)
+			map1.sync(map2,{syncCursor: true});
+			map2.sync(map1,{syncCursor: true});
+
+			
+			var year1 = $("#yearSwipe1").val()
+			var year2 = $("#yearSwipe2").val()
+			var leftSwipe = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+			var rightSwipe = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+		
+			sideBySide = L.control.sideBySide(leftSwipe, rightSwipe);
+			sideBySide.addTo(map3);
+			
+			
+			//var marker = L.marker([44.190762, -122.553686]).addTo(map);
+			
+			// ...add drawn feature group
+			var drawnItems = new L.FeatureGroup();
+			map.addLayer(drawnItems);
+			
+			// ...make the draw toolbar
+			var drawControl = new L.Control.Draw({
+				position: 'topright',
+				draw: {
+					rectangle: false,
+					polyline: false,
+					polygon: false,
+					circle: false,
+					marker: false
+				},
+				edit: {
+					featureGroup: drawnItems,
+					remove: true
+				}
+			});
+			
+			map.on("layeradd", function (event) {
+				drawnItems.bringToFront();
+			});
+			
+			
+			map.on(L.Draw.Event.CREATED, function (e) {
+				var layer = e.layer;
+				drawnItems.addLayer(layer);
+			});
+			
+			
+			
+			//map.addControl(drawControl);
+			
+			
+//############################################################################################################################################			
+//############### DRAW STUFF  \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/ \/
+//############################################################################################################################################
+
+
+
+
+
+//############################################################################################################################################			
+//############### DRAW STUFF /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\ /\
+//############################################################################################################################################
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				var year1 = $("#yearSwipe1").val()
+				var year2 = $("#yearSwipe2").val()
+				test1 = L.tileLayer(tileURL+'/'+year1+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+				test2 = L.tileLayer(tileURL+'/'+year2+'/{z}/{x}/{y}.png', {tms: true, opacity: 1, attribution: "", maxNativeZoom: 11, maxZoom: 13});
+				
+
+				
+				//var myLayer1 = test1.addTo(map3);
+				//var myLayer2 = test2.addTo(map3);
+				
+				//L.control.sideBySide(myLayer1, myLayer2).addTo(map3);
+			
+			
+			
+			
+			
+
+			$(document).ready(function(){
+				//$('#click').click(function(){
+				
+				//map.on('click', function(e){plotMultiTimeSeriesData({'lon':e.latlng.lng, 'lat':e.latlng.lat})})
+				map.on('click', function(e){plotPixelTimeSeries(e)})
+				map1.on('click', function(e){plotPixelTimeSeries(e)})
+				map2.on('click', function(e){plotPixelTimeSeries(e)})
+				//map3.on('click', function(e){plotPixelTimeSeries(e)})
+			});
+			
+			
+			
+			function plotPixelTimeSeries(e){
+				if(lastActiveSection == 'multiPointContainer'){return}
+				if($("#plot").not(":visible")){
+					$("#plot").show();
+				}
+			
+				var coords = {'lon':e.latlng.lng, 'lat':e.latlng.lat}	 
+				// serialize the data in the form     
+				
+				$.post("request_handler_test.php",
+					coords,
+					function(data, status){
+						var data = JSON.parse(data);
+						var trace1 = {
+							x: data.yr,
+							y: data.ts,
+							type: 'scatter',
+							line:{
+								color:'#498AF3', //'#D62851',
+								width:'6'
+							}
+						};
+
+						var plotlyData = [trace1];
+						var layout = {
+							showlegend: false,
+							paper_bgcolor:'rgba(255,255,255,0)',
+							plot_bgcolor:'rgba(255,255,255,0)',
+							width: 800,
+							height: 170,
+							margin: {l:45, r:10, t:10, b:30},
+							xaxis: {gridcolor: '#545454'},
+							yaxis: {
+								range: [-100, 6000],
+								gridcolor: '#545454'
+							}
+						};
+						
+						Plotly.newPlot('plot', plotlyData, layout, {
+							scrollZoom: true,
+							displaylogo: false,
+							displayModeBar: false
+						});
+					}	
+				);
+			}	
+
+			
+			var multiTrace = []
+			var multiTraceColor = ["#a6cee3", "#1f78b4" ,"#b2df8a", "#33a02c" ,"#fb9a99" ,"#e31a1c"]
+			function plotMultiTimeSeriesData(coords){			
+				if(multiTrace.length >= 6){return}
+				if($("#plot").not(":visible")){
+					$("#plot").show();
+				}
+				
+				var ts
+				$.post("request_handler_test.php", coords, function(data, status){
+					var data = JSON.parse(data);
+					var trace = {
+						x: data.yr,
+						y: data.ts,
+						type: 'scatter',
+						line:{
+							color: multiTraceColor[multiTrace.length],//'#498AF3', //'#D62851',
+							width:'4'
+						}
+					};
+					
+					multiTrace.push(trace)
+					var layout = {
+						showlegend: false,
+						paper_bgcolor:'rgba(255,255,255,0)',
+						plot_bgcolor:'rgba(255,255,255,0)',
+						width: 800,
+						height: 170,
+						margin: {l:45, r:10, t:10, b:30},
+						xaxis: {gridcolor: '#545454'},
+						yaxis: {
+							range: [-100, 6000],
+							gridcolor: '#545454'
+						}
+					};
+					
+					Plotly.newPlot('plot', multiTrace, layout, {
+						scrollZoom: true,
+						displaylogo: false,
+						displayModeBar: false
+					});
+					
+				})
+				
+			}
+			
+			
+			map.on('draw:created', function (e) {
+				var type = e.layerType
+				if (type === 'circlemarker') {
+					e.layer.setStyle({
+						fillColor: multiTraceColor[multiTrace.length], 
+						color: multiTraceColor[multiTrace.length],
+						opacity: 1,
+						fillOpacity: 0,
+						radius: 6
+						
+					});
+					
+					
+					var lon = e.layer.getLatLng().lng
+					var lat = e.layer.getLatLng().lat
+					plotMultiTimeSeriesData({'lon':lon, 'lat':lat})
+				}
+			})
+				
+			
+			</script>
+
+        </body>
+        </html>
+
+        
